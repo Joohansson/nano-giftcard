@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DropdownButton, Dropdown, MenuItem, Alert, Button, InputGroup, FormControl, FormGroup } from 'react-bootstrap';
+import { DropdownButton, Dropdown, MenuItem, Alert, Button } from 'react-bootstrap';
 import * as wallet from 'rai-wallet';
 import domtoimage from 'dom-to-image';
 
@@ -78,29 +78,18 @@ class App extends Component {
         <header className="App-header noprint">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">
-            NANO Paper Wallet
+            NANO Giftcard
           </h1>
         </header>
 
         <div className="noprint">
 
         <Alert bsStyle="info">
-          <a href="https://github.com/jelofsson/nano-paper-wallet/raw/master/nano-paper-wallet.zip">download zip of this website here</a> - disconnect your internet connection, extract the zip and open index.html in an safe OS environment.
+          <a href="https://github.com/jiikuy/nano-paper-wallet/raw/master/nano-paper-wallet.zip">download zip of this website here</a> - disconnect your internet connection, extract the zip and open index.html in an safe OS environment. <br /><br />1. Generate a wallet.<br />2. Send funds to the displayed address.<br />3. Print the giftcard out.
         </Alert>
 
-        <Button onClick={this.generateNewWallet} bsStyle="primary">Generate new Wallet</Button>
-        <FormGroup>
-        <InputGroup>
-          <InputGroup.Addon>Private Seed</InputGroup.Addon>
-          <FormControl type="text" className="upper" value={this.state.seed} onChange={this.handleSeedChange} placeholder="" />
-        </InputGroup>
-        </FormGroup>
-        <FormGroup>
-        <InputGroup>
-          <InputGroup.Addon>Public Account</InputGroup.Addon>
-          <FormControl type="text" value={this.state.account} placeholder="" />
-        </InputGroup>
-        </FormGroup>
+        <Button onClick={this.generateNewWallet} bsStyle="primary">Generate new Giftcard</Button>
+        <p className="App-address">Address: <br />{this.state.account}</p>
         <DropdownButton 
           title={"Theme - " + this.state.activeTheme.name}
           key={this.state.walletTheme}
@@ -120,7 +109,7 @@ class App extends Component {
         <img className="nano-paper-wallet-img hidden print" src={this.state.paperWalletImageData} />
 
         <footer className="App-footer noprint">
-        <a href="https://github.com/jelofsson/nano-paper-wallet.git">Github</a> | Buy me a coffee ☕️ <strong>xrb_19f6pfs7hxnuk8n1zrctdhhpwso3gtnc8357ggng8iheqbh8pjrfjbaxtzjo</strong>
+        <a href="https://github.com/jiikuy/nano-paper-wallet.git">Github</a> | Buy me a coffee ☕️ <strong>xrb_19f6pfs7hxnuk8n1zrctdhhpwso3gtnc8357ggng8iheqbh8pjrfjbaxtzjo</strong>
         </footer>
       </div>
     );

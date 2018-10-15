@@ -21,8 +21,6 @@ export default class PaperWallet extends Component {
       <div className="paper-wallet" style={bgStyle}>
           <span style={this.props.theme.textstyle} className="paper-wallet--pvt-seed-txt paper-wallet--txt">Private Seed</span>
           <QrImage className="paper-wallet--pvt-seed-qr paper-wallet--qr" content={this.props.seed} />
-          <span style={this.props.theme.textstyle} className="paper-wallet--pub-addr-txt paper-wallet--txt">Public Account</span>
-          <QrImage className="paper-wallet--pub-addr-qr paper-wallet--qr" content={this.props.account} />
       </div>
       );
     }

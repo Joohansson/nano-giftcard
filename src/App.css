@@ -30,6 +30,10 @@
   font-size: large;
 }
 
+.App-address {
+  font-weight: bold;
+}
+
 .App-footer {
   position: fixed;
   bottom: 0;

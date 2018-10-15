@@ -3,6 +3,7 @@
     margin: 0 auto!Important;
     background: no-repeat center;
     position: relative;
+    border: 1px dotted black;
 }
 .paper-wallet > * {
     position: absolute;
@@ -22,25 +23,23 @@
 }
 
 .paper-wallet--qr {
-    top: 80px;
-    height: 200px;
-    width: 200px;
-    padding: 4px;
+    top: 74px;
+    height: 100x;
+    width: 100px;
     background-color: #ffffff;
+    padding: 4px;
 }
+
 .paper-wallet--pvt-seed-qr,
 .paper-wallet--pvt-seed-txt {
-    left: 60px;
-}
-.paper-wallet--pub-addr-qr,
-.paper-wallet--pub-addr-txt {
-    right: 60px;
+    margin-left: 97px;
+
 }
 
 .paper-wallet--txt {
-    top: 55px;
+    top: 50px;
     width: 200px;
-    text-align: center;
+    text-align: left;
     color: #ffffff;
     font-size: 12px;
     font-family: 'Nunito';
