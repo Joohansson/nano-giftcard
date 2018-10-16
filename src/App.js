@@ -84,8 +84,9 @@ class App extends Component {
 
         <div className="noprint">
 
-        <Alert bsStyle="info">
-          <a href="https://github.com/jiikuy/nano-paper-wallet/raw/master/nano-paper-wallet.zip">download zip of this website here</a> - disconnect your internet connection, extract the zip and open index.html in an safe OS environment. <br /><br />1. Generate a wallet.<br />2. Send funds to the displayed address.<br />3. Print the giftcard out.
+        <Alert>
+          This tool lets you generate giftcards for <a href="https://nano.org/">NANO.</a> <br />How to use:<br />1. Generate a wallet.<br />2. Send funds to the displayed address.<br />3. Print the giftcard out.<br /><br />
+          <a href="https://github.com/jiikuy/nano-paper-wallet/raw/master/nano-paper-wallet.zip">download zip of this website here</a> - disconnect your internet connection, extract the zip and open index.html in an safe OS environment. <br />
         </Alert>
 
         <Button onClick={this.generateNewWallet} bsStyle="primary">Generate new Giftcard</Button>
@@ -109,7 +110,7 @@ class App extends Component {
         <img className="nano-paper-wallet-img hidden print" src={this.state.paperWalletImageData} />
 
         <footer className="App-footer noprint">
-        <a href="https://github.com/jiikuy/nano-paper-wallet.git">Github</a> | Buy me a coffee ☕️ <strong>xrb_19f6pfs7hxnuk8n1zrctdhhpwso3gtnc8357ggng8iheqbh8pjrfjbaxtzjo</strong>
+        <a href="https://github.com/jiikuy/nano-paper-wallet.git">Github</a> | Buy me a coffee ☕️ <strong>xrb_1jw6id9wp9fhjyix9hmqjc8sgd7n6sq8xp38wh11497m5crxew9wq1zngw13</strong>
         </footer>
       </div>
     );

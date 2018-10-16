@@ -63,9 +63,12 @@
 }
 @media print {
   .App > div > * {
-    width: 100%;
-    max-width: 100%;
+    height: 90%;
   }
+  @page {
+    size: landscape;
+  }
+  
 }
 
 .konvajs-content {
@@ -87,4 +90,8 @@
 
 .alert > a {
   text-decoration: underline;
+}
+
+.alert {
+  font-weight: bold; 
 }

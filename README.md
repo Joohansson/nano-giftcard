@@ -3,11 +3,11 @@
 
 This application allows you to generate and print a giftcard for [NANO Currency](http://nano.org/).
 
-Try the [live demo here](https://jelofsson.github.io/nano-paper-wallet).
+Try the [live demo here](https://jiikuy.github.io/nano-giftcard).
 
 ## Install and run application locally
 
-Download [the zip here](https://github.com/jiikuy/nano-paper-wallet/raw/master/nano-paper-wallet.zip)
+Download [the zip here](https://github.com/jiikuy/nano-giftcard/raw/master/nano-paper-wallet.zip)
 
 disconnect your internet connection, extract the zip and open index.html in an safe OS environment.
 
@@ -15,7 +15,7 @@ disconnect your internet connection, extract the zip and open index.html in an s
 
 Im using [rai-wallet](https://www.npmjs.com/package/rai-wallet) lib to generate a wallet seed and account on client side.
 
-Thanks to Lucas for lending me your [NANO-4k-Wallpapers](https://www.behance.net/gallery/61543179/NANO-4k-Wallpapers) as wallet pictures.
+This is a fork of the [nano-paper-wallet](https://github.com/jelofsson/nano-paper-wallet) app by jelofsson.
 
 ## Developer instructions
 
@@ -37,4 +37,6 @@ Your app is ready to be deployed!
 
 Be very careful when using this application. I'm not responsible if any mistakes or errors occur. Use at your own risk.
 
-Find this useful? Send me a donation at `xrb_19f6pfs7hxnuk8n1zrctdhhpwso3gtnc8357ggng8iheqbh8pjrfjbaxtzjo`
+Find this useful? Send me a donation at `xrb_1jw6id9wp9fhjyix9hmqjc8sgd7n6sq8xp38wh11497m5crxew9wq1zngw13`
+
+Send a donation to the developer of [nano-paper-wallet](https://github.com/jelofsson/nano-paper-wallet): `xrb_19f6pfs7hxnuk8n1zrctdhhpwso3gtnc8357ggng8iheqbh8pjrfjbaxtzjo`
