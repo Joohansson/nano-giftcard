@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { DropdownButton, Dropdown, MenuItem, Alert, Button } from 'react-bootstrap';
 import * as wallet from 'rai-wallet';
 import domtoimage from 'dom-to-image';
+import QrImage from './paperWallet/qrImage.js';
 
 import logo from './nanoLogo.svg';
 import './App.css';
@@ -90,7 +91,7 @@ class App extends Component {
         </Alert>
 
         <Button onClick={this.generateNewWallet} bsStyle="primary">Generate new Giftcard</Button>
-        <p className="App-address">Address: <br />{this.state.account}</p>
+        <div><p className="App-address">Address: <br />{this.state.account}</p><QrImage className="addressQr"content={"xrb:" + this.state.account} /></div>
         <DropdownButton 
           title={"Theme - " + this.state.activeTheme.name}
           key={this.state.walletTheme}
