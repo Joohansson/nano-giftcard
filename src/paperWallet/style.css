@@ -3,7 +3,7 @@
     margin: 0 auto!Important;
     background: no-repeat center;
     position: relative;
-    border: 1px dotted black;
+    border: 2px dotted #00003470;
 }
 .paper-wallet > * {
     position: absolute;
@@ -23,23 +23,37 @@
 }
 
 .paper-wallet--qr {
-    top: 41px;
-    height: 110x;
-    width: 110px;
-    background-color: #ffffff;
+    top: 39px;
+    height: 112x;
+    width: 112px;
 }
 
 .paper-wallet--pvt-seed-qr,
 .paper-wallet--pvt-seed-txt {
-    margin-left: 252px;
+    margin-left: 251px;
 
 }
 
-.paper-wallet--txt {
-    top: 50px;
-    width: 200px;
-    text-align: left;
-    color: #ffffff;
-    font-size: 12px;
+.paper-wallet--name {
+    top: 123px;
+    left: 200px;
+    width: 400px;
+    text-align: center;
+    color: #4a90e2;
+    font-size: 25px;
     font-family: 'Nunito';
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.paper-wallet--msg {
+    top: 158px;
+    left: 200px;
+    width: 400px;
+    text-align: center;
+    color: #4a90e2;
+    font-size: 18px;
+    font-family: 'Nunito';
+    line-height: 18px;
+    word-wrap: break-word;
 }
