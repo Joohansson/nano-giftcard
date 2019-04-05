@@ -1,17 +1,17 @@
 .App {
-  font-size: 12px;
+  font-size: 14px;
   font-family: 'Nunito';
   text-align: center;
 }
 
 .App-logo {
-  height: 3vw;
+  height: 2.5vw;
   margin-right: 1vw;
 }
 
 .App-header {
   background-color: #000034;
-  padding: 4vh;
+  padding: 1.5vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,6 +24,7 @@
   font-weight: 200;
   font-size: 3vw;
   margin: 0;
+  margin-top: 4px;
 }
 
 .App-intro {
@@ -35,40 +36,74 @@
 }
 
 .App-footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   line-height: 40px;
   background-color: #f5f5f5;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
 }
 
 .App-jumbotron {
   font-size: 1.5em;
 }
 
-.App > div > *:first-child {
-  margin-top: 1rem;
-}
 .App > div > * {
   clear: both;
   width: 80%;
   max-width: 80%;
   margin: 0 auto 1rem auto;
 }
-@media screen and (min-width: 1300px) {
-  .App > div > * {
-    width: 1000px;
-    max-width: 1000px;
-  }
+
+.App > div > * {
+  width: 800px;
+  max-width: 800px;
 }
+
 @media print {
   .App > div > * {
     height: 90%;
+    width: 800px;
+    max-width: 800px;
   }
 }
 
 .konvajs-content {
   width: 100%;
+}
+
+.btn {
+  font-size: 16px;
+}
+
+.first-btn {
+  margin-top: 1rem !important;
+}
+
+.print-group {
+  margin-top: 1rem !important;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  padding-top: 0;
+}
+
+.print-btn {
+  margin: 0 0 !important;
+  padding-top: 0;
+  width: 300px !important;
+  margin-right: 100px !important;
+}
+
+.download-btn {
+  margin: 0 0 !important;
+  padding-top: 0;
+  width: 300px !important;
+  margin-left: 100px !important;
 }
 
 .logo {
@@ -90,5 +125,15 @@
 
 .alert {
   font-weight: bold; 
+}
+
+/* Collapsible div */
+.collapse-content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  text-align: left;
+  margin: 0 auto 0 auto !important;
 }
 

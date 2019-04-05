@@ -10,7 +10,7 @@ export default class PaperWallet extends Component {
         this.state = {
             width: null,
             height: null,
-            qr: 'hello',
+            qr: 'NANO',
             color: '#0000ff',
         };
     }
@@ -19,7 +19,6 @@ export default class PaperWallet extends Component {
       var bgStyle={backgroundImage: 'url(' + this.props.theme.background + ')'};
       return (
       <div className="paper-wallet" style={bgStyle}>
-          <span style={this.props.theme.textstyle} className="paper-wallet--pvt-seed-txt paper-wallet--txt">Private Seed</span>
           <QrImage className="paper-wallet--pvt-seed-qr paper-wallet--qr" content={this.props.seed} />
       </div>
       );

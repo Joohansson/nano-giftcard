@@ -41,9 +41,12 @@ class App extends Component {
     try {
       const wallet = new Wallet();
       wallet.createWallet(seed);
+      var account = wallet.getAccounts().pop()['account']
+      //replace xrb_ with nano_
+      account = account;
       this.setState({
         seed: wallet.getSeed(),
-        account: wallet.getAccounts().pop()['account']
+        account: account
       });
     } catch (error) {
       this.setState({
@@ -72,6 +75,15 @@ class App extends Component {
             console.error('oops, something went wrong!', error);
         });
   }
+  
+  collapse() {
+    var content = document.getElementsByClassName("collapse-content")[0];
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  }
 
   render() {
     return (
@@ -79,39 +91,60 @@ class App extends Component {
         <header className="App-header noprint">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">
-            NANO Giftcard
+            Nano Gift
           </h1>
         </header>
 
         <div className="noprint">
-
-        <Alert>
-          This tool lets you generate giftcards for <a href="https://nano.org/">NANO.</a> <br />How to use:<br />1. Generate a wallet.<br />2. Send funds to the displayed address.<br />3. Print the giftcard out.<br /><br />
-          <a href="https://github.com/jiikuy/nano-paper-wallet/raw/master/nano-paper-wallet.zip">download zip of this website here</a> - disconnect your internet connection, extract the zip and open index.html in an safe OS environment. <br />
-        </Alert>
-
-        <Button onClick={this.generateNewWallet} bsStyle="primary">Generate new Giftcard</Button>
-        <div><p className="App-address">Address: <br />{this.state.account}</p><QrImage className="addressQr"content={"xrb:" + this.state.account} /></div>
-        <DropdownButton 
-          title={"Theme - " + this.state.activeTheme.name}
-          key={this.state.walletTheme}
-          id={`dropdown-basic-${this.state.walletTheme}`}
-        >
-          {Themes.map(function(theme, index){
-            return <MenuItem eventKey={index} onSelect={this.selectTheme}>{theme.name}</MenuItem>;
-          }.bind(this))}
-        </DropdownButton>
-        {this.state.walletTheme}
-        <Button onClick={this.print} bsStyle="primary">Print</Button>
-
-        </div>
-          <div className="nano-paper-wallet noprint">
-            <PaperWallet theme={this.state.activeTheme} seed={this.state.seed} account={this.state.account} />
+          <Button bsStyle="primary" onClick={this.collapse} className="first-btn">How to use</Button>
+          <div className="collapse-content">
+              <strong>The seed is not stored but for increased security you can download <a href="https://github.com/Joohansson/nano-giftcard/raw/master/nano-paper-wallet.zip">this zip</a>, disconnect your internet connection, extract the zip and open index.html in an safe OS environment. <br /></strong>
+              <br />
+              <ol>
+                  <li>Press "Generate new Seed"</li>
+                  <li>Send funds to the displayed address with any <a href="https://nanolinks.info/#wallets">Nano Wallet</a></li>
+                  <li>Optional: Provide a name and message for the recipient and choose a theme</li>
+                  <li>Download or Print the card</li>
+                  <li>Check the account status: Transaction arrived and unpocketed and later redeemed</li>
+              </ol>
+            <br />
           </div>
+
+          <Button onClick={this.generateNewWallet} bsStyle="primary">Generate new Seed</Button>
+          <div>
+            <p className="App-address">
+              <strong>Send Funds:</strong> <a href={"xrb:" + this.state.account}>{this.state.account}</a><br />
+            </p>
+            <QrImage className="addressQr"content={"xrb:" + this.state.account} />
+            <p>
+              <br />
+              <strong>Check Account Status:</strong> <a href={"https://nanocrawler.cc/explorer/account/" + this.state.account} target="_blank">NanoCrawler</a> or <a href={"https://www.nanode.co/account/" + this.state.account} target="_blank">Nanode</a>
+            </p>
+          </div>
+          
+          <DropdownButton 
+            title={"Theme - " + this.state.activeTheme.name}
+            key={this.state.walletTheme}
+            id={`dropdown-basic-${this.state.walletTheme}`}
+          >
+            {Themes.map(function(theme, index){
+              return <MenuItem eventKey={index} onSelect={this.selectTheme}>{theme.name}</MenuItem>;
+            }.bind(this))}
+          </DropdownButton>
+          {this.state.walletTheme}
+        </div>   
+        
+        <div className="nano-paper-wallet noprint">
+          <PaperWallet theme={this.state.activeTheme} seed={this.state.seed} account={this.state.account} />
+        </div>
         <img className="nano-paper-wallet-img hidden print" src={this.state.paperWalletImageData} />
+        <div className="noprint print-group">
+          <Button onClick={this.print} bsStyle="primary" className="print-btn">Print</Button>
+          <Button onClick={this.print} bsStyle="primary" className="download-btn">Download</Button>
+        </div>
 
         <footer className="App-footer noprint">
-        <a href="https://github.com/jiikuy/nano-paper-wallet.git">Github</a> | Buy me a coffee ☕️ <strong>xrb_1jw6id9wp9fhjyix9hmqjc8sgd7n6sq8xp38wh11497m5crxew9wq1zngw13</strong>
+          <a href="https://github.com/Joohansson/nano-giftcard">Github</a> | Buy me a cookie ☕️ <strong>nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo</strong>
         </footer>
       </div>
     );

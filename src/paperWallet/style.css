@@ -1,5 +1,5 @@
 .paper-wallet {
-    height: 350px;
+    height: 373px;
     margin: 0 auto!Important;
     background: no-repeat center;
     position: relative;
@@ -23,15 +23,15 @@
 }
 
 .paper-wallet--qr {
-    top: 74px;
-    height: 100x;
-    width: 100px;
+    top: 41px;
+    height: 110x;
+    width: 110px;
     background-color: #ffffff;
 }
 
 .paper-wallet--pvt-seed-qr,
 .paper-wallet--pvt-seed-txt {
-    margin-left: 97px;
+    margin-left: 252px;
 
 }
 
