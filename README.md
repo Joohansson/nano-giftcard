@@ -3,7 +3,7 @@
 
 This application allows you to generate and print a giftcard for [NANO Currency](http://nano.org/).
 
-[Public Site - nanogift.me] (https://nanogift.me)
+[Public Site](https://nanogift.me)
 
 ## Install and run application locally
 
@@ -43,6 +43,8 @@ Your app is ready to be deployed!
 ## Warning
 
 Be careful when using this application. I'm not responsible if any mistakes or errors occur. Use at your own risk.
+
+## Contribution
 
 Find this useful? Send me a donation at `nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo`
 

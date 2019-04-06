@@ -3,6 +3,7 @@ import { DropdownButton, Dropdown, MenuItem, Button } from 'react-bootstrap';
 import * as wallet from 'rai-wallet';
 import domtoimage from 'dom-to-image';
 import QrImage from './paperWallet/qrImage.js';
+import { saveAs } from 'file-saver';
 
 import logo from './nanoLogo.svg';
 import './App.css';
@@ -91,7 +92,7 @@ class App extends Component {
     var node = document.getElementsByClassName('nano-paper-wallet')[0];
     var width =  document.body.clientWidth;
     domtoimage.toPng(node, {
-      width: 1000,
+      width: 1200,
       height: 373,
       style: {
         'transform': 'translate('+-((width-1000)/2)+'px, 0)',
@@ -118,14 +119,16 @@ class App extends Component {
       width: 800,
       height: 373,
       style: {
-        'transform': 'translate('+-((width-800)/2)+'px, 0)',
-        'transform-origin': 'top left'
+        transform: 'translate('+-((width-800)/2)+'px, 0)'
       }
     }).then(function (dataUrl) {
-        var link = document.createElement('a');
-        link.download = 'nanogift.png';
-        link.href = dataUrl;
-        link.click();
+        //var link = document.createElement('a');
+        //link.download = 'nanogift.png';
+        //link.href = dataUrl;
+        //link.click();
+        /* Filesaver has better cross browser support */
+        var FileSaver = require('file-saver');
+        FileSaver.saveAs(dataUrl, "nanogift.png");
       }.bind(this))
       .catch(function (error) {
           console.error('oops, something went wrong!', error);
