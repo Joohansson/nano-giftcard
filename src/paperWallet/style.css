@@ -3,7 +3,7 @@
     margin: 0 auto!Important;
     background: no-repeat center;
     position: relative;
-    border: 2px dotted #00003470;
+    border: 2px dotted #00003440;
 }
 .paper-wallet > * {
     position: absolute;
@@ -22,19 +22,52 @@
     overflow: hidden;
 }
 
+.paper-wallet--bgr-img {
+  margin: 0 !important;
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  z-index: -1;
+}
+
 .paper-wallet--qr {
     top: 40px;
     height: 112x;
     width: 112px;
 }
 
-.paper-wallet--pub-addr-qr {
+.paper-wallet--pub-addr-qr, .paper-wallet--pub-addr-txt {
     left: 35px;
     display: hidden;
 }
 
-.paper-wallet--pvt-seed-qr {
+.paper-wallet--pvt-seed-qr, .paper-wallet--pvt-seed-txt {
     right: 35px;
+}
+
+.paper-wallet--pvt-seed-txt, .paper-wallet--pub-addr-txt, .paper-wallet--ios-txt, .paper-wallet--android-txt {
+  width: 112px;
+  text-align: center;
+  color: #000034;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: 'Noto Sans';
+}
+
+.paper-wallet--pvt-seed-txt, .paper-wallet--pub-addr-txt {
+  top: 12px;
+}
+
+.paper-wallet--ios-txt, .paper-wallet--android-txt {
+  top: 208px;
+}
+
+.paper-wallet--ios-txt {
+  left: 36px;
+}
+
+.paper-wallet--android-txt {
+  right: 36px;
 }
 
 .paper-wallet--name {
@@ -62,7 +95,7 @@
 }
 
 .paper-wallet--seed, .paper-wallet--account {
-    bottom: 5px;
+    bottom: 3px;
     left: 50px;
     width: 700px;
     text-align: center;
@@ -77,4 +110,16 @@
 .paper-wallet--account {
   bottom: 14px;
   display: hidden;
+}
+
+.paper-wallet--guide {
+    bottom: 16px;
+    left: 200px;
+    width: 400px;
+    text-align: center;
+    color: #000034;
+    font-size: 12px;
+    line-height: 14px;
+    font-family: 'Noto Sans';
+    word-wrap: break-word;
 }

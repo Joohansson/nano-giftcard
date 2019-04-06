@@ -78,6 +78,7 @@ html {
   width: 112px;
   height: 112px;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .konvajs-content {

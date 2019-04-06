@@ -32,6 +32,7 @@ class App extends Component {
     this.generateNewWallet = this.generateNewWallet.bind(this);
     this.setName = this.setName.bind(this);
     this.setMsg = this.setMsg.bind(this);
+    this.copyToClipboard = this.copyToClipboard.bind(this);
   }
 
   componentDidMount() {
@@ -144,6 +145,27 @@ class App extends Component {
       content.style.maxHeight = content.scrollHeight + "px";
     }
   }
+  
+  /** Copy account address to clipboard */
+  copyToClipboard(event) {
+    const el = document.createElement('textarea');  // Create a <textarea> element
+    el.value = this.state.account;                  // Set its value to the string that you want copied
+    el.setAttribute('readonly', '');                // Make it readonly to be tamper-proof
+    el.style.position = 'absolute';                 
+    el.style.left = '-9999px';                      // Move outside the screen to make it invisible
+    document.body.appendChild(el);                  // Append the <textarea> element to the HTML document
+    const selected =            
+      document.getSelection().rangeCount > 0        // Check if there is any content selected previously
+        ? document.getSelection().getRangeAt(0)     // Store selection if found
+        : false;                                    // Mark as false to know no selection existed before
+    el.select();                                    // Select the <textarea> content
+    document.execCommand('copy');                   // Copy - only works as a result of a user action (e.g. click events)
+    document.body.removeChild(el);                  // Remove the <textarea> element
+    if (selected) {                                 // If a selection existed before copying
+      document.getSelection().removeAllRanges();    // Unselect everything on the HTML document
+      document.getSelection().addRange(selected);   // Restore the original selection
+    }
+  };
 
   render() {
     return (
@@ -161,12 +183,12 @@ class App extends Component {
               <strong>The seed is not stored but for increased security you can download <a href="https://github.com/Joohansson/nano-giftcard/raw/master/nano-paper-wallet.zip">this zip</a>, disconnect your internet connection, extract the zip and open index.html in an safe OS environment. <br /></strong>
               <br />
               <ol>
-                  <li>Press "Generate new Seed"</li>
-                  <li>Send funds to the displayed address with any <a href="https://nanolinks.info/#wallets">Nano Wallet</a> or scan the QR</li>
-                  <li>Optional: Provide a name and message for the recipient and choose a theme</li>
-                  <li>Print or Download. Scale print for smaller card. Printing may not work in some browsers. </li>
+                  <li>Press "Generate new Seed" or refresh the page.</li>
+                  <li>Send funds to the displayed address with any <a href="https://nanolinks.info/#wallets">Nano Wallet</a>. Scan QR, click QR to copy or click the deep link.</li>
+                  <li>Optional: Provide a name and message for the recipient and choose a theme.</li>
+                  <li>Print or Download. Printing may not work in some browsers. Print screen for higher quality.</li>
                   <li>If making a small card, make sure QR are readable before giving it away!</li>
-                  <li>Check the account status: Transaction arrived and unpocketed and later redeemed with 0 balance left</li>
+                  <li>Check the account status: Transaction arrived and unpocketed and later redeemed with 0 balance left.</li>
               </ol>
             <br />
           </div>
@@ -174,11 +196,11 @@ class App extends Component {
           <Button onClick={this.generateNewWallet} bsStyle="primary">Generate new Seed</Button>
           <div>
             <p className="App-address">
-              <strong>Send Funds:</strong> <a href={"xrb:" + this.state.account}>{this.state.account}</a><br />
+              <strong>Account (click QR to copy): <a href={"xrb:" + this.state.account}>{this.state.account}</a><br /></strong>
             </p>
-            <QrImage className="addressQr"content={"xrb:" + this.state.account} />
+            <QrImage className="addressQr" content={"xrb:" + this.state.account} onClick={this.copyToClipboard} />
             <p>
-              <strong>Check Account Status:</strong> <a href={"https://nanocrawler.cc/explorer/account/" + this.state.account} target="_blank">NanoCrawler</a> or <a href={"https://www.nanode.co/account/" + this.state.account} target="_blank">Nanode</a>
+              <strong>Check Account Status: <a href={"https://nanocrawler.cc/explorer/account/" + this.state.account} target="_blank">NanoCrawler</a> or <a href={"https://www.nanode.co/account/" + this.state.account} target="_blank">Nanode</a></strong>
             </p>
           </div>
           
