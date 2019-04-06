@@ -207,7 +207,7 @@ class App extends Component {
         <div className="extra"></div>
 
         <footer className="App-footer noprint">
-          <a href="https://github.com/Joohansson/nano-giftcard">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Donate a Cookie 🍪</a>
+          <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Donate a Cookie 🍪</a>
         </footer>
       </div>
     );
