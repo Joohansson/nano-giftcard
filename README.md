@@ -13,16 +13,17 @@ Disconnect your internet connection, extract the zip and open index.html in an s
 
 ## Notes
 
-I'm using [rai-wallet](https://www.npmjs.com/package/rai-wallet) lib to generate a wallet seed and account on client side.
+The site using [rai-wallet](https://www.npmjs.com/package/rai-wallet) lib to generate a wallet seed and account on client side.
 
 This is a fork of the [nano-paper-wallet](https://github.com/jelofsson/nano-paper-wallet) app by jelofsson.
 
 ## Developer instructions
 
 ### Prepare for build (Ubuntu example)`
-`apt-get install npm`
-`git clone https://github.com/Joohansson/nano-giftcard`
-`cd nanogift`
+
+`apt-get install`\
+`git clone https://github.com/Joohansson/nano-giftcard`\
+`cd nanogift`\
 `npm install`
 
 ### Build application

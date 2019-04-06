@@ -161,7 +161,7 @@ class App extends Component {
                   <li>Press "Generate new Seed"</li>
                   <li>Send funds to the displayed address with any <a href="https://nanolinks.info/#wallets">Nano Wallet</a> or scan the QR</li>
                   <li>Optional: Provide a name and message for the recipient and choose a theme</li>
-                  <li>Print or Download the card. Scale print for smaller card</li>
+                  <li>Print or Download. Scale print for smaller card. Printing may not work in some browsers. </li>
                   <li>If making a small card, make sure QR are readable before giving it away!</li>
                   <li>Check the account status: Transaction arrived and unpocketed and later redeemed with 0 balance left</li>
               </ol>
