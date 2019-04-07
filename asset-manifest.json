@@ -1,9 +1,17 @@
 {
-  "main.css": "static/css/main.280e0ce3.css",
-  "main.css.map": "static/css/main.280e0ce3.css.map",
-  "main.js": "static/js/main.768837bd.js",
-  "main.js.map": "static/js/main.768837bd.js.map",
-  "static\\media\\background1.png": "static/media/background1.7313a518.png",
+  "main.css": "static/css/main.474cb016.css",
+  "main.css.map": "static/css/main.474cb016.css.map",
+  "main.js": "static/js/main.12d2c1fc.js",
+  "main.js.map": "static/js/main.12d2c1fc.js.map",
+  "static\\media\\Nunito-Light.eot": "static/media/Nunito-Light.64365c70.eot",
+  "static\\media\\Nunito-Light.ttf": "static/media/Nunito-Light.60cd5285.ttf",
+  "static\\media\\Nunito-Light.woff": "static/media/Nunito-Light.0f8590fd.woff",
+  "static\\media\\Nunito-Light.woff2": "static/media/Nunito-Light.26b9fa9c.woff2",
+  "static\\media\\Nunito-Regular.eot": "static/media/Nunito-Regular.0fb76e04.eot",
+  "static\\media\\Nunito-Regular.ttf": "static/media/Nunito-Regular.0179bd9a.ttf",
+  "static\\media\\Nunito-Regular.woff": "static/media/Nunito-Regular.225cfac2.woff",
+  "static\\media\\Nunito-Regular.woff2": "static/media/Nunito-Regular.bffa83cf.woff2",
+  "static\\media\\background1.png": "static/media/background1.f967a66b.png",
   "static\\media\\background2.png": "static/media/background2.176d23a5.png",
   "static\\media\\background3.png": "static/media/background3.c0167f48.png",
   "static\\media\\background4.png": "static/media/background4.d72f2e14.png",
@@ -12,5 +20,5 @@
   "static\\media\\glyphicons-halflings-regular.ttf": "static/media/glyphicons-halflings-regular.e18bbf61.ttf",
   "static\\media\\glyphicons-halflings-regular.woff": "static/media/glyphicons-halflings-regular.fa277232.woff",
   "static\\media\\glyphicons-halflings-regular.woff2": "static/media/glyphicons-halflings-regular.448c34a5.woff2",
-  "static\\media\\nanoLogo.svg": "static/media/nanoLogo.c403d53d.svg"
+  "static\\media\\logo.png": "static/media/logo.e37787db.png"
 }
