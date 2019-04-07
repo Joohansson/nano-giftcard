@@ -5,7 +5,7 @@ import domtoimage from 'dom-to-image';
 import QrImage from './paperWallet/qrImage.js';
 import { saveAs } from 'file-saver';
 
-import logo from './nanoLogo.svg';
+import logo from './logo.png';
 import './App.css';
 import './print.css';
 import { PaperWallet, Themes } from './paperWallet';
@@ -93,10 +93,10 @@ class App extends Component {
     var node = document.getElementsByClassName('nano-paper-wallet')[0];
     var width =  document.body.clientWidth;
     domtoimage.toPng(node, {
-      width: 1200,
+      width: 800,
       height: 373,
       style: {
-        'transform': 'translate('+-((width-1000)/2)+'px, 0)',
+        'transform': 'translate('+-((width-800)/2)+'px, 0)',
         'transform-origin': 'top left'
       }
     }).then(function (dataUrl) {
@@ -172,9 +172,6 @@ class App extends Component {
       <div className="App">
         <header className="App-header noprint">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">
-            Nano Gift
-          </h1>
         </header>
 
         <div className="noprint">
@@ -232,7 +229,7 @@ class App extends Component {
         <div className="extra"></div>
 
         <footer className="App-footer noprint">
-          <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Donate a Cookie 🍪</a>
+          <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Donate me a Cookie 🍪</a>
         </footer>
       </div>
     );

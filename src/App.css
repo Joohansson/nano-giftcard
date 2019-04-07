@@ -2,24 +2,46 @@ html {
    overflow-y: scroll !important;
 }
 
+@font-face {
+  font-family: "Nunito Regular";
+  src: url("fonts/Nunito-Regular.eot");
+  src:
+  url('fonts/Nunito-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("fonts/Nunito-Regular.woff") format("woff"), /* Pretty Modern Browsers */
+  url("fonts/Nunito-Regular.woff2") format("woff2"), /* Super Modern Browsers */
+  url('fonts/Nunito-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */;
+}
+
+@font-face {
+  font-family: "Nunito Light";
+  src: url("fonts/Nunito-Light.eot");
+  src:
+  url('fonts/Nunito-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("fonts/Nunito-Light.woff") format("woff"), /* Pretty Modern Browsers */
+  url("fonts/Nunito-Light.woff2") format("woff2"), /* Super Modern Browsers */
+  url('fonts/Nunito-Light.ttf')  format('truetype'), /* Safari, Android, iOS */;
+}
+
 .App {
   font-size: 14px;
-  font-family: 'Nunito';
+  font-family: 'Nunito Light', Fallback, sans-serif;
   text-align: center;
 }
 
 .App-logo {
-  height: 2.5vw;
-  margin-right: 1vw;
+  width: 800px;
+  max-width: 800px;
 }
 
 .App-header {
   background-color: #000034;
-  padding: 1.5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
   color: white;
+}
+
+.App-header-container {
+  width: 800px;
 }
 
 .App-title {
@@ -48,6 +70,7 @@ html {
   font-size: 14px;
   height: 35px;
   font-weight: bold;
+  font-family: 'Nunito Light', Fallback, sans-serif;
 }
 
 .App-jumbotron {
@@ -56,14 +79,9 @@ html {
 
 .App > div > * {
   clear: both;
-  width: 80%;
-  max-width: 80%;
-  margin: 0 auto 1rem auto;
-}
-
-.App > div > * {
   width: 800px;
   max-width: 800px;
+  margin: 0 auto 1rem auto;
 }
 
 @media print {

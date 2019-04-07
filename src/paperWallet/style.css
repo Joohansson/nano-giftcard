@@ -28,6 +28,7 @@
   left: -2px;
   top: -2px;
   z-index: -1;
+  width: 800px;
 }
 
 .paper-wallet--qr {
