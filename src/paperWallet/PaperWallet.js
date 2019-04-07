@@ -41,7 +41,7 @@ export default class PaperWallet extends Component {
         <p className="paper-wallet--guide" style={this.props.theme.guide}>
           <strong>HOW TO REDEEM</strong><br/>
           &#171;  Install Natrium mobile wallet  &#187;<br/>
-          Create a wallet, backup your seed and DO NOT import this seed.<br/>
+          Create a wallet or use existing. DO NOT import this seed.<br/>
           Go to settings &#187; Load from Paper Wallet<br/>
           Funds are transferred into your account<br/>
           <br/>

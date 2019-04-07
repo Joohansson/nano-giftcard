@@ -36,7 +36,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.generateNewWallet(null, false);
+    // check if seed was found in the url (url?seed=xxx)
+    var seed = this.getUrlParams(window.location.href).seed;
+    if (typeof seed != 'undefined') {
+      this.generateNewWallet(null, seed);
+    }
+    else {
+      this.generateNewWallet(null, false);
+    }
   }
 
   selectTheme(eventKey, event) {
@@ -55,10 +62,13 @@ class App extends Component {
         seed: wallet.getSeed(),
         account: account
       });
+      
+      // update the url bar (to allow sharing the card)
+      window.history.pushState({}, null, '/?seed=' + wallet.getSeed());
     } catch (error) {
       this.setState({
-        seed: seed,
-        account: ''
+        seed: 'Invalid Seed',
+        account: 'Invalid Account'
       });
     }
   }
@@ -166,6 +176,61 @@ class App extends Component {
       document.getSelection().addRange(selected);   // Restore the original selection
     }
   };
+  
+  getUrlParams(url) {
+    // get query string from url (optional) or window
+    var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+
+    // we'll store the parameters here
+    var obj = {};
+
+    // if query string exists
+    if (queryString) {
+      // stuff after # is not part of query string, so get rid of it
+      queryString = queryString.split('#')[0];
+      // split our query string into its component parts
+      var arr = queryString.split('&');
+      for (var i = 0; i < arr.length; i++) {
+        // separate the keys and the values
+        var a = arr[i].split('=');
+        // set parameter name and value (use 'true' if empty)
+        var paramName = a[0];
+        var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+        // (optional) keep case consistent
+        paramName = paramName.toLowerCase();
+        if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+        // if the paramName ends with square brackets, e.g. colors[] or colors[2]
+        if (paramName.match(/\[(\d+)?\]$/)) {
+          // create key if it doesn't exist
+          var key = paramName.replace(/\[(\d+)?\]/, '');
+          if (!obj[key]) obj[key] = [];
+          // if it's an indexed array e.g. colors[2]
+          if (paramName.match(/\[\d+\]$/)) {
+            // get the index value and add the entry at the appropriate position
+            var index = /\[(\d+)\]/.exec(paramName)[1];
+            obj[key][index] = paramValue;
+          } else {
+            // otherwise add the value to the end of the array
+            obj[key].push(paramValue);
+          }
+        } else {
+          // we're dealing with a string
+          if (!obj[paramName]) {
+            // if it doesn't exist, create property
+            obj[paramName] = paramValue;
+          } else if (obj[paramName] && typeof obj[paramName] === 'string'){
+            // if property does exist and it's a string, convert it to an array
+            obj[paramName] = [obj[paramName]];
+            obj[paramName].push(paramValue);
+          } else {
+            // otherwise add the property
+            obj[paramName].push(paramValue);
+          }
+        }
+      }
+    }
+    return obj;
+  }
 
   render() {
     return (
@@ -180,10 +245,10 @@ class App extends Component {
               <strong>The seed is not stored but for increased security you can download <a href="https://github.com/Joohansson/nano-giftcard/raw/master/nano-paper-wallet.zip">this zip</a>, disconnect your internet connection, extract the zip and open index.html in an safe OS environment. <br /></strong>
               <br />
               <ol>
-                  <li>Press "Generate new Seed" or refresh the page.</li>
+                  <li>Press "Generate new Seed".</li>
                   <li>Send funds to the displayed address with any <a href="https://nanolinks.info/#wallets">Nano Wallet</a>. Scan QR, click QR to copy or click the deep link.</li>
                   <li>Optional: Provide a name and message for the recipient and choose a theme.</li>
-                  <li>Print or Download. Printing may not work in some browsers. Print screen for higher quality.</li>
+                  <li>Print, download or share the URL. Print screen for higher quality or if other methods does not work.</li>
                   <li>If making a small card, make sure QR are readable before giving it away!</li>
                   <li>Check the account status: Transaction arrived and unpocketed and later redeemed with 0 balance left.</li>
               </ol>
@@ -211,8 +276,8 @@ class App extends Component {
               }.bind(this))}
             </DropdownButton>
             {this.state.walletTheme}
-            <input type="text" name="card-name" id="card-name" placeholder="Optional name" maxlength="33" onInput={this.setName}/>
-            <input type="text" name="card-msg" id="card-msg" placeholder="Optional message" maxlength="96" onInput={this.setMsg}/>
+            <input type="text" name="card-name" id="card-name" placeholder="Optional name" maxLength="33" onInput={this.setName}/>
+            <input type="text" name="card-msg" id="card-msg" placeholder="Optional message" maxLength="96" onInput={this.setMsg}/>
           </div>
         </div>   
         
