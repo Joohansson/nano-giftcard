@@ -4,6 +4,7 @@ import * as wallet from 'rai-wallet';
 import domtoimage from 'dom-to-image';
 import QrImage from './paperWallet/qrImage.js';
 import { saveAs } from 'file-saver';
+import $ from 'jquery';
 
 import logo from './logo.png';
 import './App.css';
@@ -23,10 +24,15 @@ class App extends Component {
       activeTheme: Themes[0],
       paperWalletImageData: '',
       name: '',
-      msg: ''
+      msg: '',
+      activeThemeId: 0,
+      nameMax: 28,
+      msgMax: 80,
+      readOnly: 0
     };
 
     this.print = this.print.bind(this);
+    this.showShareModal = this.showShareModal.bind(this);
     this.selectTheme = this.selectTheme.bind(this);
     this.handleSeedChange = this.handleSeedChange.bind(this);
     this.generateNewWallet = this.generateNewWallet.bind(this);
@@ -40,13 +46,144 @@ class App extends Component {
     var seed = this.getUrlParams(window.location.href).seed;
     if (typeof seed != 'undefined') {
       this.generateNewWallet(null, seed);
+      this.state.readOnly += 1;
     }
     else {
       this.generateNewWallet(null, false);
     }
-  }
+    
+    // check if theme was found in the url (url?theme=0)
+    var themeId = this.getUrlParams(window.location.href).theme;
+    if (typeof themeId != 'undefined') {
+      this.selectTheme(themeId, null);
+      this.state.readOnly += 1;
+    }
+    
+    // check if name was found in the url (url?name=Bill)
+    var name = this.getUrlParams(window.location.href).name;
+    if (typeof name != 'undefined') {
+      name = name.substring(0, this.state.nameMax); //trim to max length
+      this.setState({ name: name });
+      var nameText = document.getElementById('card-name');
+      nameText.value = name;
+      this.state.readOnly += 1;
+    }
+    
+    // check if message was found in the url (url?msg=Hello)
+    var msg = this.getUrlParams(window.location.href).msg;
+    if (typeof msg != 'undefined') {
+      msg = msg.substring(0, this.state.msgMax); //trim to max length
+      this.setState({ msg: msg });
+      var msgText = document.getElementById('card-msg');
+      msgText.value = msg;
+      this.state.readOnly += 1;
+    }
+    
+    // Full share link detected, hide everything not the card
+    if (this.state.readOnly == 4) {
+      var hideEl = document.getElementsByClassName("remove")
+      for(var i = 0; i < hideEl.length; i++) {
+        hideEl[i].style.display = "none";
+      }
+      document.getElementsByClassName("nano-paper-wallet")[0].style.marginTop = "50px";
+    }
+    else {
+      var hideEl = document.getElementsByClassName("remove")
+      for(var i = 0; i < hideEl.length; i++) {
+        hideEl[i].style.display = "block";
+      }
+      document.getElementsByClassName("nano-paper-wallet")[0].style.marginTop = "0px";
+    }
+    
+    /* Define share link modal jquery function */
+    $.fn.psendmodal = function() {
+      var modal_structure = '<div class="modal_overlay"></div>'+
+                  '<div class="modal_psend">'+
+                    '<div class="modal_title">'+
+                      '<span>&nbsp;</span>'+
+                      '<a href="#" class="modal_close">&times;</a>'+
+                    '</div>'+
+                    '<div class="modal_content"></div>'+
+                  '</div>';
 
+      $('body').append(modal_structure);
+      show_modal();
+
+      function show_modal() {
+        $('.modal_overlay').stop(true, true).fadeIn();
+        $('.modal_psend').stop(true, true).fadeIn();
+      }
+
+      window.remove_modal = function() {
+        $('.modal_overlay').stop(true, true).fadeOut(500, function() { $(this).remove(); });
+        $('.modal_psend').stop(true, true).fadeOut(500, function() { $(this).remove(); });
+        return false;
+      }
+
+      $(".modal_close").click(function(e) {
+        e.preventDefault();
+        window.remove_modal();
+      });
+
+      $(".modal_overlay").click(function(e) {
+        e.preventDefault();
+        window.remove_modal();
+      });
+      
+      $(document).keyup(function(e) {
+        if (e.keyCode == 27) { // Esc
+          window.remove_modal();
+        }
+      });
+    };
+  }
+  
+  // Show popup with share link
+  showShareModal() {
+    $(document).psendmodal();
+    var link_base = window.location.origin;
+    var link_params = '?seed=' + this.state.seed + '&theme=' + this.state.activeThemeId + '&name=' + encodeURI(this.state.name) + '&msg=' + encodeURI(this.state.msg);
+    var note_text = 'Sharing this link will allow the recipient to view the Nano Card directly.';
+
+    var content =  '<div class="public_link_modal">'+
+              '<strong>Click to select and copy</strong>'+
+              '<div class="copied">Succesfully copied to clipboard</div>'+
+              '<div class="copied_not">Content could not be copied to clipboard</div>'+
+              '<div class="form-group">'+
+                '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="4" readonly>' + link_base + link_params + '</textarea>'+
+              '</div>'+
+              '<span class="note">' + note_text + '</span>'+
+            '</div>';
+    var title 	= 'SHARE URL';
+    $('.modal_title span').html(title);
+    $('.modal_content').html(content);
+    
+    /* Auto select text */
+    var textBox = document.getElementById("shareArea");
+    textBox.onfocus = function() {
+      textBox.select();
+      
+      if (document.execCommand("copy")) {
+        /* Inform user about copy */
+        document.getElementsByClassName("copied")[0].style.display = "block";
+      }
+      else {
+        document.getElementsByClassName("copied_not")[0].style.display = "block";
+      }
+      
+      // Work around Chrome's little problem
+      textBox.onmouseup = function() {
+          // Prevent further mouseup intervention
+          textBox.onmouseup = null;
+          return false;
+      };
+    };
+    
+    
+  }
+  
   selectTheme(eventKey, event) {
+    this.setState({ activeThemeId: eventKey });
     this.setState({ activeTheme: Themes[eventKey] });
   }
 
@@ -64,8 +201,9 @@ class App extends Component {
       });
       
       // update the url bar (to allow sharing the card)
-      window.history.pushState({}, null, '/?seed=' + wallet.getSeed());
-    } catch (error) {
+      //window.history.pushState({}, null, '/?seed=' + wallet.getSeed());
+    }
+    catch (error) {
       this.setState({
         seed: 'Invalid Seed',
         account: 'Invalid Account'
@@ -196,9 +334,10 @@ class App extends Component {
         // set parameter name and value (use 'true' if empty)
         var paramName = a[0];
         var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+        paramValue = decodeURI(paramValue);
         // (optional) keep case consistent
-        paramName = paramName.toLowerCase();
-        if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+        //paramName = paramName.toLowerCase();
+        if (typeof paramValue === 'string') paramValue = paramValue;
         // if the paramName ends with square brackets, e.g. colors[] or colors[2]
         if (paramName.match(/\[(\d+)?\]$/)) {
           // create key if it doesn't exist
@@ -239,7 +378,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
 
-        <div className="noprint">
+        <div className="noprint remove">
           <Button bsStyle="primary" onClick={this.collapse} className="first-btn">How to use</Button>
           <div className="collapse-content">
               <strong>The seed is not stored but for increased security you can download <a href="https://github.com/Joohansson/nano-giftcard/raw/master/nano-paper-wallet.zip">this zip</a>, disconnect your internet connection, extract the zip and open index.html in an safe OS environment. <br /></strong>
@@ -248,7 +387,7 @@ class App extends Component {
                   <li>Press "Generate new Seed".</li>
                   <li>Send funds to the displayed address with any <a href="https://nanolinks.info/#wallets">Nano Wallet</a>. Scan QR, click QR to copy or click the deep link.</li>
                   <li>Optional: Provide a name and message for the recipient and choose a theme.</li>
-                  <li>Print, download or share the URL. Print screen for higher quality or if other methods does not work.</li>
+                  <li>Print, Download or Share. Print screen for higher quality or if other methods does not work.</li>
                   <li>If making a small card, make sure QR are readable before giving it away!</li>
                   <li>Check the account status: Transaction arrived and unpocketed and later redeemed with 0 balance left.</li>
               </ol>
@@ -276,8 +415,8 @@ class App extends Component {
               }.bind(this))}
             </DropdownButton>
             {this.state.walletTheme}
-            <input type="text" name="card-name" id="card-name" placeholder="Optional name" maxLength="33" onInput={this.setName}/>
-            <input type="text" name="card-msg" id="card-msg" placeholder="Optional message" maxLength="96" onInput={this.setMsg}/>
+            <input type="text" name="card-name" id="card-name" placeholder="Optional name" maxLength={this.state.nameMax} onInput={this.setName}/>
+            <input type="text" name="card-msg" id="card-msg" placeholder="Optional message" maxLength={this.state.msgMax} onInput={this.setMsg}/>
           </div>
         </div>   
         
@@ -286,9 +425,10 @@ class App extends Component {
         </div>
         <img className="nano-paper-wallet-img hidden print" src={this.state.paperWalletImageData} />
         
-        <div className="noprint print-group">
+        <div className="noprint print-group remove">
           <Button onClick={this.print} bsStyle="primary" className="print-btn">Print</Button>
           <Button onClick={this.download} bsStyle="primary" className="download-btn">Download</Button>
+          <Button onClick={this.showShareModal} bsStyle="primary" className="share-btn">Share</Button>
         </div>
         
         <div className="extra"></div>
