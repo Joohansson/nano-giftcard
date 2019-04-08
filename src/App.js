@@ -152,7 +152,7 @@ class App extends Component {
   showShareModal() {
     $(document).psendmodal();
     var link_base = window.location.origin;
-    var link_params = '?gift=' + Base64.encode('?seed=' + this.state.seed + '&theme=' + this.state.activeThemeId + '&name=' + encodeURI(this.state.name) + '&msg=' + encodeURI(this.state.msg));
+    var link_params = '?gift=' + Base64.encode('?seed=' + this.state.seed + '&theme=' + this.state.activeThemeId + '&name=' + encodeURI(this.state.name.replace('?','').replace('&','').replace('=','')) + '&msg=' + encodeURI(this.state.msg.replace('?','').replace('&','').replace('=','')));
     var note_text = 'Share above link by any preferred method and the recipient will be able to view the Nano Gift directly. Seed is included and never stored on the web server.';
 
     var content =  '<div class="public_link_modal">'+
