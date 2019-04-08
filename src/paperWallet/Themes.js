@@ -38,6 +38,7 @@ export default [
       natriumIosTxt: {color: '#FFFFFF'},
       natriumAndroidTxt: {color: '#FFFFFF'},
       background: dark, pubDisplay: {display: 'none'}, iosText: "Natrium iOS",
+      borderStyle: {border: "none"},
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
           '&#171;  Install Natrium mobile wallet  &#187;<br/>'+
           'Create a wallet or use existing. DO NOT import this seed.<br/>'+
@@ -77,6 +78,7 @@ export default [
       natriumIosTxt: {color: '#FFFFFF'},
       natriumAndroidTxt: {color: '#FFFFFF', display: "none"},
       background: plaindark, pubDisplay: {display: 'none'}, iosText: "Compatible Wallets",
+      borderStyle: {border: "none"},
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
           '&#171;  Use any compatible wallet<br/>'+
           'Import the private seed and transfer the funds to your own wallet  &#187;<br/>'+
@@ -105,6 +107,7 @@ export default [
       privTxt: {color: '#FFFFFF'},
       natriumIosTxt: {display: 'none'},
       natriumAndroidTxt: {display: 'none'},
+      borderStyle: {border: "none"},
       guide: {display: 'none'}
     },
 ];

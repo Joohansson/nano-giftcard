@@ -255,11 +255,11 @@ class App extends Component {
     var node = document.getElementsByClassName('nano-paper-wallet')[0];
     var width =  document.body.clientWidth;
     domtoimage.toPng(node, {
-      width: 800,
-      height: 373,
+      width: 1600,
+      height: 746,
       style: {
-        'transform': 'translate('+-((width-800)/2)+'px, 0)',
-        'transform-origin': 'top left'
+        'transform': 'scale(2)',
+        'transform-origin': ((width-799))+'px 0'
       }
     }).then(function (dataUrl) {
           var sprite = new Image();
@@ -279,10 +279,11 @@ class App extends Component {
     var node = document.getElementsByClassName('nano-paper-wallet')[0];
     var width =  document.body.clientWidth;
     domtoimage.toPng(node, {
-      width: 800,
-      height: 373,
+      width: 1600,
+      height: 746,
       style: {
-        transform: 'translate('+-((width-800)/2)+'px, 0)'
+        'transform': 'scale(2)',
+        'transform-origin': ((width-799))+'px 0'
       }
     }).then(function (dataUrl) {
         //var link = document.createElement('a');
