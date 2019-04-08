@@ -259,7 +259,7 @@ class App extends Component {
       height: 746,
       style: {
         'transform': 'scale(2)',
-        'transform-origin': ((width-799))+'px 0'
+        'transform-origin': (width-799)+'px 0'
       }
     }).then(function (dataUrl) {
           var sprite = new Image();
@@ -283,7 +283,7 @@ class App extends Component {
       height: 746,
       style: {
         'transform': 'scale(2)',
-        'transform-origin': ((width-799))+'px 0'
+        'transform-origin': (width-799)+'px 0'
       }
     }).then(function (dataUrl) {
         //var link = document.createElement('a');
