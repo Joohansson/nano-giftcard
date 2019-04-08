@@ -96,7 +96,7 @@
 }
 
 .paper-wallet--seed, .paper-wallet--account {
-    bottom: 3px;
+    bottom: 4px;
     left: 50px;
     width: 700px;
     text-align: center;
@@ -114,7 +114,7 @@
 }
 
 .paper-wallet--guide {
-    bottom: 16px;
+    bottom: 17px;
     left: 200px;
     width: 400px;
     text-align: center;

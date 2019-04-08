@@ -39,21 +39,13 @@ export default class PaperWallet extends Component {
         </p>
         
         <p className="paper-wallet--guide" style={this.props.theme.guide}>
-          <strong>HOW TO REDEEM</strong><br/>
-          &#171;  Install Natrium mobile wallet  &#187;<br/>
-          Create a wallet or use existing. DO NOT import this seed.<br/>
-          Go to settings &#187; Load from Paper Wallet<br/>
-          Funds are transferred into your account<br/>
-          <br/>
-          Or use any compatible wallet found at nano.org<br/>
-          <br/>
-          <strong>If you got the seed from someone else, do not use it again</strong>
+          <div dangerouslySetInnerHTML={{ __html: this.props.theme.guideText }} />
         </p>
         
         <p className="paper-wallet--pub-addr-txt" style={this.props.theme.pubTxt}>Account Address</p>
         <p className="paper-wallet--pvt-seed-txt" style={this.props.theme.privTxt}>Private Seed</p>
-        <p className="paper-wallet--ios-txt" style={this.props.theme.natriumTxt}>Natrium iOS</p>
-        <p className="paper-wallet--android-txt" style={this.props.theme.natriumTxt}>Natrium Android</p>
+        <p className="paper-wallet--ios-txt" style={this.props.theme.natriumIosTxt}>{this.props.theme.iosText}</p>
+        <p className="paper-wallet--android-txt" style={this.props.theme.natriumAndroidTxt}>Natrium Android</p>
       </div>
       );
     }
