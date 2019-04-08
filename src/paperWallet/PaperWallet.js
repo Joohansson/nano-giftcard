@@ -39,7 +39,7 @@ export default class PaperWallet extends Component {
         </p>
         
         <p className="paper-wallet--guide" style={this.props.theme.guide}>
-          <div dangerouslySetInnerHTML={{ __html: this.props.theme.guideText }} />
+          <span dangerouslySetInnerHTML={{ __html: this.props.theme.guideText }} />
         </p>
         
         <p className="paper-wallet--pub-addr-txt" style={this.props.theme.pubTxt}>Account Address</p>

@@ -7,13 +7,11 @@
   "dependencies": {
     "bootstrap": "^3.0.0",
     "dom-to-image": "2.6.0",
-    "dompurify": "^1.0.10",
     "file-saver": "^2.0.1",
     "gulp": "3.9.1",
     "gulp-zip": "4.1.0",
     "jquery": "^3.3.1",
     "js-base64": "^2.5.1",
-    "jsdom": "^14.0.0",
     "qrious": "^4.0.2",
     "rai-wallet": "^0.2.2",
     "react": "^16.2.0",

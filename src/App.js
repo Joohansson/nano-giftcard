@@ -41,16 +41,7 @@ class App extends Component {
     this.setMsg = this.setMsg.bind(this);
     this.copyToClipboard = this.copyToClipboard.bind(this);
     this.getUrlParams = this.getUrlParams.bind(this);
-    
-    // setup sanitizer
-    const createDOMPurify = require('dompurify');
-    const { JSDOM } = require('jsdom');
-     
-    const window = (new JSDOM('')).window;
-    
-    this.sani = {
-      DOMPurify: createDOMPurify(window)
-    }
+    this.sanitize = this.sanitize.bind(this);
   }
 
   componentDidMount() {
@@ -345,6 +336,11 @@ class App extends Component {
     }
   };
   
+  sanitize(str) {
+    str = str.replace(/[^a-z0-9бйнуъсьедц .,_-]/gim,"");
+    return str.trim();
+  }
+  
   getUrlParams(url) {
 
     // get query string from url (optional) or window
@@ -366,7 +362,7 @@ class App extends Component {
         var paramName = a[0];
         var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
         paramValue = decodeURI(paramValue);
-        paramValue = this.sani.DOMPurify.sanitize(paramValue);  //sanitizer
+        //paramValue = this.sanitize(paramValue);  //sanitizer
         // if the paramName ends with square brackets, e.g. colors[] or colors[2]
         if (paramName.match(/\[(\d+)?\]$/)) {
           // create key if it doesn't exist
