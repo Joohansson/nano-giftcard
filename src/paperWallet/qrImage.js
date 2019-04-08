@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import QRious from 'qrious';
 
 export default class QrImage extends React.Component {
@@ -25,6 +25,6 @@ export default class QrImage extends React.Component {
     }
 
     render() {
-      return <img { ...this.props }src={this.state.image} />;
+      return <img { ...this.props }src={this.state.image} alt="QR"/>;
     }
   }

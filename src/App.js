@@ -5,6 +5,7 @@ import domtoimage from 'dom-to-image';
 import QrImage from './paperWallet/qrImage.js';
 import { saveAs } from 'file-saver';
 import $ from 'jquery';
+import { Base64 } from 'js-base64';
 
 import logo from './logo.png';
 import './App.css';
@@ -27,10 +28,10 @@ class App extends Component {
       msg: '',
       activeThemeId: 0,
       nameMax: 28,
-      msgMax: 80,
-      readOnly: 0
+      msgMax: 80
     };
 
+    this.componentDidMount = this.componentDidMount.bind(this);
     this.print = this.print.bind(this);
     this.showShareModal = this.showShareModal.bind(this);
     this.selectTheme = this.selectTheme.bind(this);
@@ -42,57 +43,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // check if seed was found in the url (url?seed=xxx)
-    var seed = this.getUrlParams(window.location.href).seed;
-    if (typeof seed != 'undefined') {
-      this.generateNewWallet(null, seed);
-      this.state.readOnly += 1;
+    var parameter = this.getUrlParams(window.location.href).gift;
+    if (typeof parameter !== 'undefined') {
+      try {
+        this.readParameters(Base64.decode(parameter));
+      }
+      catch (error) {
+        console.log("Could not base64 decode URI");
+      }
     }
     else {
       this.generateNewWallet(null, false);
-    }
-    
-    // check if theme was found in the url (url?theme=0)
-    var themeId = this.getUrlParams(window.location.href).theme;
-    if (typeof themeId != 'undefined') {
-      this.selectTheme(themeId, null);
-      this.state.readOnly += 1;
-    }
-    
-    // check if name was found in the url (url?name=Bill)
-    var name = this.getUrlParams(window.location.href).name;
-    if (typeof name != 'undefined') {
-      name = name.substring(0, this.state.nameMax); //trim to max length
-      this.setState({ name: name });
-      var nameText = document.getElementById('card-name');
-      nameText.value = name;
-      this.state.readOnly += 1;
-    }
-    
-    // check if message was found in the url (url?msg=Hello)
-    var msg = this.getUrlParams(window.location.href).msg;
-    if (typeof msg != 'undefined') {
-      msg = msg.substring(0, this.state.msgMax); //trim to max length
-      this.setState({ msg: msg });
-      var msgText = document.getElementById('card-msg');
-      msgText.value = msg;
-      this.state.readOnly += 1;
-    }
-    
-    // Full share link detected, hide everything not the card
-    if (this.state.readOnly == 4) {
-      var hideEl = document.getElementsByClassName("remove")
-      for(var i = 0; i < hideEl.length; i++) {
-        hideEl[i].style.display = "none";
-      }
-      document.getElementsByClassName("nano-paper-wallet")[0].style.marginTop = "50px";
-    }
-    else {
-      var hideEl = document.getElementsByClassName("remove")
-      for(var i = 0; i < hideEl.length; i++) {
-        hideEl[i].style.display = "block";
-      }
-      document.getElementsByClassName("nano-paper-wallet")[0].style.marginTop = "0px";
     }
     
     /* Define share link modal jquery function */
@@ -131,26 +92,73 @@ class App extends Component {
       });
       
       $(document).keyup(function(e) {
-        if (e.keyCode == 27) { // Esc
+        if (e.keyCode === 27) { // Esc
           window.remove_modal();
         }
       });
     };
   }
   
+  readParameters(parameters) {
+    var readOnly = 0;
+    // check if seed was found in the url (url?seed=xxx)
+    var seed = this.getUrlParams(parameters).seed;
+    if (typeof seed !== 'undefined') {
+      this.generateNewWallet(null, seed);
+      readOnly += 1;
+    }
+    
+    // check if theme was found in the url (url?theme=0)
+    var themeId = this.getUrlParams(parameters).theme;
+    if (typeof themeId !== 'undefined') {
+      this.selectTheme(themeId, null);
+      readOnly += 1;
+    }
+    
+    // check if name was found in the url (url?name=Bill)
+    var name = this.getUrlParams(parameters).name;
+    if (typeof name !== 'undefined') {
+      name = name.substring(0, this.state.nameMax); //trim to max length
+      this.setState({ name: name });
+      var nameText = document.getElementById('card-name');
+      nameText.value = name;
+      readOnly += 1;
+    }
+    
+    // check if message was found in the url (url?msg=Hello)
+    var msg = this.getUrlParams(parameters).msg;
+    if (typeof msg !== 'undefined') {
+      msg = msg.substring(0, this.state.msgMax); //trim to max length
+      this.setState({ msg: msg });
+      var msgText = document.getElementById('card-msg');
+      msgText.value = msg;
+      readOnly += 1;
+    }
+    
+    // Full share link detected, hide everything not the card
+    if (readOnly === 4) {
+      var hideEl = document.getElementsByClassName("remove")
+      for(var i = 0; i < hideEl.length; i++) {
+        hideEl[i].style.display = "none";
+      }
+      document.getElementsByClassName("nano-paper-wallet")[0].style.marginTop = "50px";
+      document.getElementsByClassName("home-btn")[0].style.display = "block";
+    }
+  }
+  
   // Show popup with share link
   showShareModal() {
     $(document).psendmodal();
     var link_base = window.location.origin;
-    var link_params = '?seed=' + this.state.seed + '&theme=' + this.state.activeThemeId + '&name=' + encodeURI(this.state.name) + '&msg=' + encodeURI(this.state.msg);
-    var note_text = 'Sharing this link will allow the recipient to view the Nano Card directly.';
+    var link_params = '?gift=' + Base64.encode('?seed=' + this.state.seed + '&theme=' + this.state.activeThemeId + '&name=' + encodeURI(this.state.name) + '&msg=' + encodeURI(this.state.msg));
+    var note_text = 'Share above link by any preferred method and the recipient will be able to view the Nano Gift directly. Seed is included and never stored on the web server.';
 
     var content =  '<div class="public_link_modal">'+
               '<strong>Click to select and copy</strong>'+
               '<div class="copied">Succesfully copied to clipboard</div>'+
               '<div class="copied_not">Content could not be copied to clipboard</div>'+
               '<div class="form-group">'+
-                '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="4" readonly>' + link_base + link_params + '</textarea>'+
+                '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="3" readonly>' + link_base + link_params + '</textarea>'+
               '</div>'+
               '<span class="note">' + note_text + '</span>'+
             '</div>';
@@ -209,12 +217,16 @@ class App extends Component {
         account: 'Invalid Account'
       });
     }
+    
+    //update account text
+    document.getElementById("addrCopied").innerHTML = "click QR to copy";
+    document.getElementById("addrCopied").style.color = "#000000";
   }
   
   /* Update card name */
   setName(event, input="") {
     if (event != null) {
-      var input = event.target.value
+      input = event.target.value
     }
     this.setState({
         name: input
@@ -224,7 +236,7 @@ class App extends Component {
   /* Update card message */
   setMsg(event, input="") {
     if (event != null) {
-      var input = event.target.value
+      input = event.target.value
     }
     this.setState({
         msg: input
@@ -278,7 +290,7 @@ class App extends Component {
         /* Filesaver has better cross browser support */
         var FileSaver = require('file-saver');
         FileSaver.saveAs(dataUrl, "nanogift.png");
-      }.bind(this))
+      })
       .catch(function (error) {
           console.error('oops, something went wrong!', error);
       });
@@ -307,7 +319,14 @@ class App extends Component {
         ? document.getSelection().getRangeAt(0)     // Store selection if found
         : false;                                    // Mark as false to know no selection existed before
     el.select();                                    // Select the <textarea> content
-    document.execCommand('copy');                   // Copy - only works as a result of a user action (e.g. click events)
+    if (document.execCommand('copy')) {                   // Copy - only works as a result of a user action (e.g. click events)
+      document.getElementById("addrCopied").innerHTML = "copied!";
+      document.getElementById("addrCopied").style.color = "#6fec75";
+    }
+    else {
+      document.getElementById("addrCopied").innerHTML = "not copied";
+      document.getElementById("addrCopied").style.color = "#ec6f6f";
+    }
     document.body.removeChild(el);                  // Remove the <textarea> element
     if (selected) {                                 // If a selection existed before copying
       document.getSelection().removeAllRanges();    // Unselect everything on the HTML document
@@ -335,9 +354,6 @@ class App extends Component {
         var paramName = a[0];
         var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
         paramValue = decodeURI(paramValue);
-        // (optional) keep case consistent
-        //paramName = paramName.toLowerCase();
-        if (typeof paramValue === 'string') paramValue = paramValue;
         // if the paramName ends with square brackets, e.g. colors[] or colors[2]
         if (paramName.match(/\[(\d+)?\]$/)) {
           // create key if it doesn't exist
@@ -370,6 +386,11 @@ class App extends Component {
     }
     return obj;
   }
+  
+  // refresh page without any extra path
+  goHome() {
+    window.location.href = window.location.origin;
+  }
 
   render() {
     return (
@@ -397,7 +418,7 @@ class App extends Component {
           <Button onClick={this.generateNewWallet} bsStyle="primary">Generate new Seed</Button>
           <div>
             <p className="App-address">
-              <strong>Account (click QR to copy): <a href={"xrb:" + this.state.account}>{this.state.account}</a><br /></strong>
+              <strong>Account (<span id="addrCopied">click QR to copy</span>): <a href={"xrb:" + this.state.account}>{this.state.account}</a><br /></strong>
             </p>
             <QrImage className="addressQr" content={"xrb:" + this.state.account} onClick={this.copyToClipboard} />
             <p>
@@ -423,7 +444,7 @@ class App extends Component {
         <div className="nano-paper-wallet noprint">
           <PaperWallet theme={this.state.activeTheme} seed={this.state.seed} account={this.state.account} name={this.state.name} msg={this.state.msg}/>
         </div>
-        <img className="nano-paper-wallet-img hidden print" src={this.state.paperWalletImageData} />
+        <img className="nano-paper-wallet-img hidden print" src={this.state.paperWalletImageData} alt="paper wallet" />
         
         <div className="noprint print-group remove">
           <Button onClick={this.print} bsStyle="primary" className="print-btn">Print</Button>
@@ -431,10 +452,14 @@ class App extends Component {
           <Button onClick={this.showShareModal} bsStyle="primary" className="share-btn">Share</Button>
         </div>
         
+        <div className="noprint print-group">
+          <Button onClick={this.goHome} bsStyle="primary" className="home-btn">Create Your Own Nano Gift</Button>
+        </div>
+        
         <div className="extra"></div>
 
         <footer className="App-footer noprint">
-          <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Donate me a Cookie 🍪</a>
+          <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Donate me a Cookie <span role="img" aria-label="cookie">🍪</span></a>
         </footer>
       </div>
     );

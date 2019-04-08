@@ -1,4 +1,3 @@
-'use strict';
 import light from './bg/background1.png';
 import dark from './bg/background2.png';
 import paperlight from './bg/background3.png';

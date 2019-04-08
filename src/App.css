@@ -164,6 +164,13 @@ html {
   margin-left: 50px !important;
 }
 
+.home-btn {
+  display: none;
+  margin: 0 0 !important;
+  width: 800px !important;
+  margin-left: 0px !important;
+}
+
 .extra {
   height: 50px;
 }
