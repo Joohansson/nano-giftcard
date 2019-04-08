@@ -15,7 +15,7 @@ export default class QrImage extends React.Component {
         qr.background = '#ffffff';
         qr.backgroundAlpha = 0;
         qr.foreground = '#000034';
-        qr.level = 'M';
+        qr.level = 'L';
         qr.foregroundAlpha = 1;
         qr.size = 112;
         this.setState({image: qr.toDataURL('image/png') });
