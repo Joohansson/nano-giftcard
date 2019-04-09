@@ -13,7 +13,7 @@
     margin: 0 auto!Important;
     background: no-repeat center;
     position: relative;
-    border: 2px dotted #00003440;
+    border: 2px dotted rgba(0,0,54,0.5);
 }
 .paper-wallet > * {
     position: absolute;
