@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.6f42b124.css",
-  "main.css.map": "static/css/main.6f42b124.css.map",
-  "main.js": "static/js/main.6248a8f6.js",
-  "main.js.map": "static/js/main.6248a8f6.js.map",
+  "main.css": "static/css/main.91c22e51.css",
+  "main.css.map": "static/css/main.91c22e51.css.map",
+  "main.js": "static/js/main.80432a15.js",
+  "main.js.map": "static/js/main.80432a15.js.map",
   "static\\media\\NotoSans-Bold.eot": "static/media/NotoSans-Bold.20d4b448.eot",
   "static\\media\\NotoSans-Bold.ttf": "static/media/NotoSans-Bold.5599230e.ttf",
   "static\\media\\NotoSans-Bold.woff": "static/media/NotoSans-Bold.0453182f.woff",
@@ -21,11 +21,12 @@
   "static\\media\\background4.png": "static/media/background4.f2ff8fa0.png",
   "static\\media\\background5.png": "static/media/background5.b931d597.png",
   "static\\media\\background6.png": "static/media/background6.ed36a492.png",
+  "static\\media\\donation.png": "static/media/donation.8bc81d20.png",
   "static\\media\\glyphicons-halflings-regular.eot": "static/media/glyphicons-halflings-regular.f4769f9b.eot",
   "static\\media\\glyphicons-halflings-regular.svg": "static/media/glyphicons-halflings-regular.89889688.svg",
   "static\\media\\glyphicons-halflings-regular.ttf": "static/media/glyphicons-halflings-regular.e18bbf61.ttf",
   "static\\media\\glyphicons-halflings-regular.woff": "static/media/glyphicons-halflings-regular.fa277232.woff",
   "static\\media\\glyphicons-halflings-regular.woff2": "static/media/glyphicons-halflings-regular.448c34a5.woff2",
   "static\\media\\logo.png": "static/media/logo.e37787db.png",
-  "static\\media\\modal-bg.png": "static/media/modal-bg.1e11257e.png"
+  "static\\media\\modal-bg.png": "static/media/modal-bg.0ae84ba6.png"
 }
