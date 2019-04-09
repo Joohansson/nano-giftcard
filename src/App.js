@@ -7,7 +7,8 @@ import { saveAs } from 'file-saver';
 import $ from 'jquery';
 import { Base64 } from 'js-base64';
 
-import logo from './logo.png';
+import logo from './img/logo.png';
+import donation from './img/donation.png';
 import './App.css';
 import './print.css';
 import { PaperWallet, Themes } from './paperWallet';
@@ -28,12 +29,14 @@ class App extends Component {
       msg: '',
       activeThemeId: 0,
       nameMax: 28,
-      msgMax: 80
+      msgMax: 80,
+      donationPath: donation
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.print = this.print.bind(this);
     this.showShareModal = this.showShareModal.bind(this);
+    this.showDonateModal = this.showDonateModal.bind(this);
     this.selectTheme = this.selectTheme.bind(this);
     this.handleSeedChange = this.handleSeedChange.bind(this);
     this.generateNewWallet = this.generateNewWallet.bind(this);
@@ -148,7 +151,7 @@ class App extends Component {
     }
   }
   
-  // Show popup with share link
+  /* Show popup with share link */
   showShareModal() {
     $(document).psendmodal();
     var link_base = window.location.origin;
@@ -157,11 +160,11 @@ class App extends Component {
 
     var content =  '<div class="public_link_modal">'+
               '<strong>Click to select and copy</strong>'+
-              '<div class="copied">Succesfully copied to clipboard</div>'+
-              '<div class="copied_not">Content could not be copied to clipboard</div>'+
               '<div class="form-group">'+
                 '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="3" readonly>' + link_base + link_params + '</textarea>'+
               '</div>'+
+              '<div class="copied">Succesfully copied to clipboard</div>'+
+              '<div class="copied_not">Content could not be copied to clipboard</div>'+
               '<span class="note">' + note_text + '</span>'+
             '</div>';
     var title 	= 'SHARE URL';
@@ -188,8 +191,48 @@ class App extends Component {
           return false;
       };
     };
+  }
+  
+  /* Show donate modal */
+  showDonateModal() {
+    $(document).psendmodal();
+    var account = 'nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo';
+
+    var content =  '<div class="public_link_modal">'+
+              '<strong>Scan the QR, use a '+'<a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">'+'Deep Link</a>'+' or<br/>Click the donation address to to copy'+'</strong>'+'<br/>'+
+              '<img class="donation-qr" id="donation" src="#" alt="QR Image"/>'+
+              '<div class="form-group">'+
+                '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="2" readonly>' + account + '</textarea>'+
+              '</div>'+
+              '<div class="copied">Succesfully copied to clipboard</div>'+
+              '<div class="copied_not">Content could not be copied to clipboard</div>'+
+            '</div>';
+    var title 	= 'DONATE';
+    $('.modal_title span').html(title);
+    $('.modal_content').html(content);
+    document.getElementById("donation").src = this.state.donationPath;
     
-    
+    /* Auto select text */
+    var textBox = document.getElementById("shareArea");
+    textBox.onfocus = function() {
+      textBox.select();
+      
+      if (document.execCommand("copy")) {
+        /* Inform user about copy */
+        document.getElementsByClassName("copied")[0].style.display = "block";
+      }
+      else {
+        document.getElementsByClassName("copied_not")[0].style.display = "block";
+      }
+      
+      // Work around Chrome's little problem
+      textBox.onmouseup = function() {
+          // Prevent further mouseup intervention
+          textBox.onmouseup = null;
+          return false;
+      };
+    };
+    return false;
   }
   
   selectTheme(eventKey, event) {
@@ -469,7 +512,7 @@ class App extends Component {
         <div className="extra"></div>
 
         <footer className="App-footer noprint">
-          <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Donate me a Cookie <span role="img" aria-label="cookie">🍪</span></a>
+          <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="javascript:void(0);" onClick={this.showDonateModal}>Donate me a Cookie <span role="img" aria-label="cookie">🍪</span></a>
         </footer>
       </div>
     );
