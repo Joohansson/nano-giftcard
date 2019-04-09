@@ -16,7 +16,7 @@ export default class PaperWallet extends Component {
     }
 
     render() {
-      var bgStyle={backgroundImage: 'url(' + this.props.theme.background + ')', 'background-size': '800px 373px', 'border': this.props.theme.borderStyle};
+      var bgStyle={backgroundImage: 'url(' + this.props.theme.background + ')', 'backgroundSize': '800px 373px', 'border': this.props.theme.borderStyle};
       return (
       <div className="paper-wallet" style={bgStyle} >
         <QrImage className="paper-wallet--pub-addr-qr paper-wallet--qr" content={"xrb:" + this.props.account} style={this.props.theme.pubDisplay}/>

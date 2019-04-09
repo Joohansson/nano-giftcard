@@ -1,11 +1,21 @@
 @font-face {
   font-family: "NotoSans Bold";
-  src: url("../fonts/NotoSans-Bold.eot");
-  src:
-  url('../fonts/NotoSans-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../fonts/NotoSans-Bold.woff') format('woff'), /* Pretty Modern Browsers */
-  url('../fonts/NotoSans-Bold.woff2') format('woff2'), /* Super Modern Browsers */
-  url('../fonts/NotoSans-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */;
+    src:
+    url("../fonts/NotoSans-Bold.woff"), /* Pretty Modern Browsers */
+    url("../fonts/NotoSans-Bold.woff2"), /* Super Modern Browsers */
+    url("../fonts/NotoSans-Bold.eot"),
+    url("../fonts/NotoSans-Bold.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/NotoSans-Bold.eot?#iefix") format("embedded-opentype"); /* IE6-IE8 */
+}
+
+@font-face {
+  font-family: "NotoSans Regular";
+    src:
+    url("../fonts/NotoSans-Regular.woff"), /* Pretty Modern Browsers */
+    url("../fonts/NotoSans-Regular.woff2"), /* Super Modern Browsers */
+    url("../fonts/NotoSans-Regular.eot"),
+    url("../fonts/NotoSans-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/NotoSans-Regular.eot?#iefix") format("embedded-opentype"); /* IE6-IE8 */
 }
 
 .paper-wallet {
@@ -91,8 +101,8 @@
     width: 400px;
     text-align: center;
     color: #4a90e2;
-    font-size: 25px;
-    font-family: 'Nunito';
+    font-size: 23px;
+    font-family: 'NotoSans Bold';
     font-weight: bold;
     white-space: nowrap;
 }
@@ -103,9 +113,9 @@
     width: 400px;
     text-align: center;
     color: #4a90e2;
-    font-size: 18px;
-    line-height: 18px;
-    font-family: 'Nunito';
+    font-size: 19px;
+    line-height: 19px;
+    font-family: 'NotoSans';
     word-wrap: break-word;
 }
 
@@ -114,9 +124,8 @@
     width: 700px;
     text-align: center;
     color: #000034;
-    font-size: 11.5px;
+    font-size: 11px;
     line-height: 12px;
-    font-weight: bold;
     font-family: 'NotoSans Bold';
     word-wrap: break-word;
 }
@@ -131,8 +140,8 @@
     width: 400px;
     text-align: center;
     color: #000034;
-    font-size: 14px;
-    line-height: 16px;
-    font-family: 'NotoSans Bold';
+    font-size: 13px;
+    line-height: 15px;
+    font-family: 'NotoSans Regular';
     word-wrap: break-word;
 }

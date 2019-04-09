@@ -4,12 +4,12 @@ html {
 
 @font-face {
   font-family: "Nunito Light";
-  src: url("fonts/Nunito-Light.eot");
   src:
-  url('fonts/Nunito-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url("fonts/Nunito-Light.woff") format("woff"), /* Pretty Modern Browsers */
-  url("fonts/Nunito-Light.woff2") format("woff2"), /* Super Modern Browsers */
-  url('fonts/Nunito-Light.ttf')  format('truetype'), /* Safari, Android, iOS */;
+    url("fonts/Nunito-Light.woff"), /* Pretty Modern Browsers */
+    url("fonts/Nunito-Light.woff2"), /* Super Modern Browsers */
+    url("fonts/Nunito-Light.eot"),
+    url('fonts/Nunito-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('fonts/Nunito-Light.eot?#iefix') format('embedded-opentype'); /* IE6-IE8 */
 }
 
 .App {
