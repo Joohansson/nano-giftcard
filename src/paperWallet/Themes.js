@@ -59,7 +59,7 @@ export default [
       privTxt: {color: '#000034'},
       natriumIosTxt: {color: '#000034'},
       natriumAndroidTxt: {color: '#000034', display: "none"},
-      background: plainlight, pubDisplay: {display: 'none'}, iosText: "Compatible Wallets",
+      background: plainlight, pubDisplay: {display: 'none'}, iosText: "Nano Wallets",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
           '&#171;  Use any compatible wallet<br/>'+
           'Import the private seed and transfer the funds to your own wallet  &#187;<br/>'+
@@ -77,7 +77,7 @@ export default [
       privTxt: {color: '#FFFFFF'},
       natriumIosTxt: {color: '#FFFFFF'},
       natriumAndroidTxt: {color: '#FFFFFF', display: "none"},
-      background: plaindark, pubDisplay: {display: 'none'}, iosText: "Compatible Wallets",
+      background: plaindark, pubDisplay: {display: 'none'}, iosText: "Nano Wallets",
       borderStyle: {border: "none"},
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
           '&#171;  Use any compatible wallet<br/>'+

@@ -52,17 +52,21 @@
     display: hidden;
 }
 
-.paper-wallet--pvt-seed-qr, .paper-wallet--pvt-seed-txt {
+.paper-wallet--pvt-seed-qr {
     right: 35px;
+}
+
+.paper-wallet--pvt-seed-txt {
+  right: 36px;
 }
 
 .paper-wallet--pvt-seed-txt, .paper-wallet--pub-addr-txt, .paper-wallet--ios-txt, .paper-wallet--android-txt {
   width: 112px;
   text-align: center;
   color: #000034;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
-  font-family: 'Noto Sans';
+  font-family: 'NotoSans Bold';
 }
 
 .paper-wallet--pvt-seed-txt, .paper-wallet--pub-addr-txt {
@@ -78,7 +82,7 @@
 }
 
 .paper-wallet--android-txt {
-  right: 36px;
+  right: 40px;
 }
 
 .paper-wallet--name {
