@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "NotoSans Bold";
+  src: url("../fonts/NotoSans-Bold.eot");
+  src:
+  url('../fonts/NotoSans-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/NotoSans-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+  url('../fonts/NotoSans-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/NotoSans-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */;
+}
+
 .paper-wallet {
     height: 373px;
     margin: 0 auto!Important;
@@ -96,15 +106,14 @@
 }
 
 .paper-wallet--seed, .paper-wallet--account {
-    bottom: 4px;
     left: 50px;
     width: 700px;
     text-align: center;
     color: #000034;
-    font-size: 11px;
-    line-height: 11px;
+    font-size: 12px;
+    line-height: 12px;
     font-weight: bold;
-    font-family: 'Noto Sans';
+    font-family: 'NotoSans Bold';
     word-wrap: break-word;
 }
 
@@ -114,13 +123,12 @@
 }
 
 .paper-wallet--guide {
-    bottom: 17px;
     left: 200px;
     width: 400px;
     text-align: center;
     color: #000034;
-    font-size: 12px;
-    line-height: 14px;
-    font-family: 'Noto Sans';
+    font-size: 14px;
+    line-height: 16px;
+    font-family: 'NotoSans Bold';
     word-wrap: break-word;
 }

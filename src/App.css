@@ -3,16 +3,6 @@ html {
 }
 
 @font-face {
-  font-family: "Nunito Regular";
-  src: url("fonts/Nunito-Regular.eot");
-  src:
-  url('fonts/Nunito-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url("fonts/Nunito-Regular.woff") format("woff"), /* Pretty Modern Browsers */
-  url("fonts/Nunito-Regular.woff2") format("woff2"), /* Super Modern Browsers */
-  url('fonts/Nunito-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */;
-}
-
-@font-face {
   font-family: "Nunito Light";
   src: url("fonts/Nunito-Light.eot");
   src:
