@@ -57,7 +57,7 @@
 }
 
 .paper-wallet--pvt-seed-txt {
-  right: 36px;
+  right: 35px;
 }
 
 .paper-wallet--pvt-seed-txt, .paper-wallet--pub-addr-txt, .paper-wallet--ios-txt, .paper-wallet--android-txt {
@@ -82,7 +82,7 @@
 }
 
 .paper-wallet--android-txt {
-  right: 40px;
+  right: 36px;
 }
 
 .paper-wallet--name {
@@ -114,7 +114,7 @@
     width: 700px;
     text-align: center;
     color: #000034;
-    font-size: 12px;
+    font-size: 11.5px;
     line-height: 12px;
     font-weight: bold;
     font-family: 'NotoSans Bold';
