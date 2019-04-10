@@ -75,8 +75,8 @@
   text-align: center;
   color: #000034;
   font-size: 13px;
-  font-weight: bold;
-  font-family: 'NotoSans Bold';
+  font-family: 'NotoSans Regular';
+  white-space: nowrap;
 }
 
 .paper-wallet--pvt-seed-txt, .paper-wallet--pub-addr-txt {
@@ -136,8 +136,8 @@
 }
 
 .paper-wallet--guide {
-    left: 200px;
-    width: 400px;
+    left: 150px;
+    width: 500px;
     text-align: center;
     color: #000034;
     font-size: 13px;

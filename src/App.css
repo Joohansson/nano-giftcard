@@ -12,9 +12,19 @@ html {
     url('fonts/Nunito-Light.eot?#iefix') format('embedded-opentype'); /* IE6-IE8 */
 }
 
+@font-face {
+  font-family: "NotoSans Regular";
+    src:
+    url("fonts/NotoSans-Regular.woff"), /* Pretty Modern Browsers */
+    url("fonts/NotoSans-Regular.woff2"), /* Super Modern Browsers */
+    url("fonts/NotoSans-Regular.eot"),
+    url("fonts/NotoSans-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("fonts/NotoSans-Regular.eot?#iefix") format("embedded-opentype"); /* IE6-IE8 */
+}
+
 .App {
-  font-size: 14px;
-  font-family: 'Nunito Light', Fallback, sans-serif;
+  font-size: 13px;
+  font-family: 'NotoSans Regular', Fallback, sans-serif;
   text-align: center;
 }
 
@@ -59,7 +69,6 @@ html {
   background-color: #e0e0e0;
   font-size: 14px;
   height: 35px;
-  font-family: 'Nunito Light', Fallback, sans-serif;
 }
 
 .App-jumbotron {

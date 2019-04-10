@@ -18,7 +18,7 @@ export default [
       natriumAndroidTxt: {color: '#000034'},
       background: light, pubDisplay: {display: 'none'}, iosText: "Natrium iOS",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
-          '&#171;  Install Natrium mobile wallet  &#187;<br/>'+
+          '&#129144;  Install Natrium mobile wallet  &#129146<br/>'+
           '"New Wallet" - Do NOT choose "Import Wallet" with this seed<br/>'+
           'Go to settings &#187; Load from Paper Wallet<br/>'+
           '<br/>'+
@@ -40,7 +40,7 @@ export default [
       background: dark, pubDisplay: {display: 'none'}, iosText: "Natrium iOS",
       borderStyle: "2px dotted transparent",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
-          '&#171;  Install Natrium mobile wallet  &#187;<br/>'+
+          '&#129144;  Install Natrium mobile wallet  &#129146<br/>'+
           '"New Wallet" - Do NOT choose "Import Wallet" with this seed<br/>'+
           'Go to settings &#187; Load from Paper Wallet<br/>'+
           '<br/>'+
@@ -54,15 +54,16 @@ export default [
       textstyle2: {color: '#4a90e2'},
       textstyle3: {color: '#4a90e2', bottom: '12px'},
       textstyle4: {display: 'none'},
+      seedQR: {top: '236px'},
       guide: {color: '#000034', bottom: '25px'},
       pubTxt: {display: 'none'},
-      privTxt: {color: '#000034'},
+      privTxt: {color: '#000034', top: '207px'},
       natriumIosTxt: {color: '#000034'},
       natriumAndroidTxt: {color: '#000034', display: "none"},
       background: plainlight, pubDisplay: {display: 'none'}, iosText: "Nano Wallets",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
-          '&#171;  Use any compatible wallet<br/>'+
-          'Import the private seed and transfer the funds to your own wallet  &#187;<br/>'+
+          '&#129144;  Use any compatible wallet<br/>'+
+          'Import the private seed and transfer the funds to your own wallet  &#129146<br/>'+
           '<br/>'+
           '<strong>Do not use this seed again after redeeming</strong>'
     },
@@ -72,16 +73,17 @@ export default [
       textstyle2: {color: '#FFFFFF'},
       textstyle3: {color: '#FFFFFF', bottom: '16px'},
       textstyle4: {display: 'none'},
+      seedQR: {top: '236px'},
       guide: {color: '#FFFFFF', bottom: '29px'},
       pubTxt: {display: 'none'},
-      privTxt: {color: '#FFFFFF'},
+      privTxt: {color: '#FFFFFF', top: '207px'},
       natriumIosTxt: {color: '#FFFFFF'},
       natriumAndroidTxt: {color: '#FFFFFF', display: "none"},
       background: plaindark, pubDisplay: {display: 'none'}, iosText: "Nano Wallets",
       borderStyle: "2px dotted transparent",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
-          '&#171;  Use any compatible wallet<br/>'+
-          'Import the private seed and transfer the funds to your own wallet  &#187;<br/>'+
+          '&#129144;  Use any compatible wallet<br/>'+
+          'Import the private seed and transfer the funds to your own wallet  &#129146<br/>'+
           '<br/>'+
           '<strong>Do not use this seed again after redeeming</strong>'
     },

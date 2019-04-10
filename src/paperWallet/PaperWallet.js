@@ -20,7 +20,7 @@ export default class PaperWallet extends Component {
       return (
       <div className="paper-wallet" style={bgStyle} >
         <QrImage className="paper-wallet--pub-addr-qr paper-wallet--qr" content={"xrb:" + this.props.account} style={this.props.theme.pubDisplay}/>
-        <QrImage className="paper-wallet--pvt-seed-qr paper-wallet--qr" content={this.props.seed} />
+        <QrImage className="paper-wallet--pvt-seed-qr paper-wallet--qr" style={this.props.theme.seedQR} content={this.props.seed} />
         
         <p className="paper-wallet--name" style={this.props.theme.textstyle1}>
           {this.props.name}
