@@ -199,7 +199,7 @@ class App extends Component {
     var account = 'nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo';
 
     var content =  '<div class="public_link_modal">'+
-              '<strong>Scan the QR, use a '+'<a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">'+'Deep Link</a>'+' or<br/>Click the donation address to to copy'+'</strong>'+'<br/>'+
+              '<strong>Scan the QR, use a <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Deep Link</a> or<br/>Click the donation address to to copy</strong><br/>'+
               '<img class="donation-qr" id="donation" src="#" alt="QR Image"/>'+
               '<div class="form-group">'+
                 '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="2" readonly>' + account + '</textarea>'+
@@ -207,7 +207,7 @@ class App extends Component {
               '<div class="copied">Succesfully copied to clipboard</div>'+
               '<div class="copied_not">Content could not be copied to clipboard</div>'+
             '</div>';
-    var title 	= 'DONATE';
+    var title 	= 'DONATE DEVELOPER';
     $('.modal_title span').html(title);
     $('.modal_content').html(content);
     document.getElementById("donation").src = this.state.donationPath;
@@ -232,6 +232,20 @@ class App extends Component {
           return false;
       };
     };
+    return false;
+  }
+  
+  /* Show donate modal */
+  showOwnerModal() {
+    $(document).psendmodal();
+    var content =  '<div class="public_link_modal">'+
+              '<strong>Who is hosting this service?</strong><br/>'+
+              'I\'m a community manager for the Nano Foundation, moderator of <a href="https://www.reddit.com/r/nanocurrency">/r/nanocurrency</a> / <a href="https://chat.nano.org/">nano discord</a> and creator of some other services like <a href="https://nanolinks.info">Nano Links</a> and <a href="https://github.com/Joohansson/NanoNodeGraphics">Nano Node Graphics</a>.<br/>'+
+              '<br/>If you find any bugs or have feedback, please don\'t hesitate to contact me at reddit or discord!';
+    var title 	= 'ABOUT OWNER';
+    $('.modal_title span').html(title);
+    $('.modal_content').html(content);
+
     return false;
   }
   
@@ -512,7 +526,7 @@ class App extends Component {
         <div className="extra"></div>
 
         <footer className="App-footer noprint">
-          <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="javascript:void(0);" onClick={this.showDonateModal}>Donate me a Cookie <span role="img" aria-label="cookie">🍪</span></a>
+          <a href="javascript:void(0);" onClick={this.showOwnerModal}>About Owner</a> | <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="javascript:void(0);" onClick={this.showDonateModal}>Donate me a Cookie <span role="img" aria-label="cookie">🍪</span></a>
         </footer>
       </div>
     );

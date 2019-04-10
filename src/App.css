@@ -71,6 +71,13 @@ html {
   height: 35px;
 }
 
+@media screen and (max-width: 1000px) {
+  .App-footer {
+    font-size: 18px;
+    height: 44px;
+  }
+}
+
 .App-jumbotron {
   font-size: 1.5em;
 }
