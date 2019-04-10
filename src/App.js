@@ -199,7 +199,7 @@ class App extends Component {
     var account = 'nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo';
 
     var content =  '<div class="public_link_modal">'+
-              '<strong>Scan the QR, use a <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">Deep Link</a> or<br/>Click the donation address to to copy</strong><br/>'+
+              '<strong>Scan the QR, use <a href="xrb:nano_1gur37mt5cawjg5844bmpg8upo4hbgnbbuwcerdobqoeny4ewoqshowfakfo">this deep link</a> or<br/>Click the donation address to copy</strong><br/>'+
               '<img class="donation-qr" id="donation" src="#" alt="QR Image"/>'+
               '<div class="form-group">'+
                 '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="2" readonly>' + account + '</textarea>'+
