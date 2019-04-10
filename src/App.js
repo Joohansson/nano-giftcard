@@ -161,7 +161,7 @@ class App extends Component {
     var content =  '<div class="public_link_modal">'+
               '<strong>Click to select and copy</strong>'+
               '<div class="form-group">'+
-                '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="3" readonly>' + link_base + link_params + '</textarea>'+
+                '<textarea id="shareArea" class="input-large public_link_copy form-control" rows="5" readonly>' + link_base + link_params + '</textarea>'+
               '</div>'+
               '<div class="copied">Succesfully copied to clipboard</div>'+
               '<div class="copied_not">Content could not be copied to clipboard</div>'+

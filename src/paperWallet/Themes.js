@@ -18,7 +18,7 @@ export default [
       natriumAndroidTxt: {color: '#000034'},
       background: light, pubDisplay: {display: 'none'}, iosText: "Natrium iOS",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
-          '&#129144;  Install Natrium mobile wallet  &#129146<br/>'+
+          'Install Natrium mobile wallet<br/>'+
           '"New Wallet" - Do NOT choose "Import Wallet" with this seed<br/>'+
           'Go to settings &#187; Load from Paper Wallet<br/>'+
           '<br/>'+
@@ -40,7 +40,7 @@ export default [
       background: dark, pubDisplay: {display: 'none'}, iosText: "Natrium iOS",
       borderStyle: "2px dotted transparent",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
-          '&#129144;  Install Natrium mobile wallet  &#129146<br/>'+
+          'Install Natrium mobile wallet<br/>'+
           '"New Wallet" - Do NOT choose "Import Wallet" with this seed<br/>'+
           'Go to settings &#187; Load from Paper Wallet<br/>'+
           '<br/>'+
@@ -62,8 +62,8 @@ export default [
       natriumAndroidTxt: {color: '#000034', display: "none"},
       background: plainlight, pubDisplay: {display: 'none'}, iosText: "Nano Wallets",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
-          '&#129144;  Use any compatible wallet<br/>'+
-          'Import the private seed and transfer the funds to your own wallet  &#129146<br/>'+
+          'Use any compatible wallet<br/>'+
+          'Import the private seed and transfer the funds to your own wallet<br/>'+
           '<br/>'+
           '<strong>Do not use this seed again after redeeming</strong>'
     },
@@ -82,8 +82,8 @@ export default [
       background: plaindark, pubDisplay: {display: 'none'}, iosText: "Nano Wallets",
       borderStyle: "2px dotted transparent",
       guideText: '<strong>HOW TO REDEEM</strong><br/>'+
-          '&#129144;  Use any compatible wallet<br/>'+
-          'Import the private seed and transfer the funds to your own wallet  &#129146<br/>'+
+          'Use any compatible wallet<br/>'+
+          'Import the private seed and transfer the funds to your own wallet<br/>'+
           '<br/>'+
           '<strong>Do not use this seed again after redeeming</strong>'
     },
