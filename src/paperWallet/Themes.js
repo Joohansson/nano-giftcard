@@ -65,6 +65,7 @@ export default [
           'Use any compatible wallet<br/>'+
           'Import the private seed and transfer the funds to your own wallet<br/>'+
           '<br/>'+
+          'More info at nano.org<br/><br/>'+
           '<strong>Do not use this seed again after redeeming</strong>'
     },
     
@@ -85,6 +86,7 @@ export default [
           'Use any compatible wallet<br/>'+
           'Import the private seed and transfer the funds to your own wallet<br/>'+
           '<br/>'+
+          'More info at nano.org<br/><br/>'+
           '<strong>Do not use this seed again after redeeming</strong>'
     },
     
