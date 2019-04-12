@@ -19,7 +19,7 @@ export default class QrImageStyle extends React.Component {
         ecLevel: 'L', // L, M, Q, H
         fill: {
           type: 'radial-gradient', // or 'linear-gradient'
-          position: [ 0.5,0.5,0, 0.5,0.5,0.6 ], //xPos,yPos,radius of inner and outer circle where position is 0-1 of full dimension
+          position: [ 0.5,0.5,0, 0.5,0.5,0.75 ], //xPos,yPos,radius of inner and outer circle where position is 0-1 of full dimension
           colorStops: [
               [ 0, '#376ab4' ], //from 0 to 100% (0-1)
               [ 1, '#000034' ],
