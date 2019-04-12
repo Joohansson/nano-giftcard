@@ -52,22 +52,27 @@
 }
 
 .paper-wallet--qr {
-    top: 40px;
-    height: 112x;
-    width: 112px;
+    top: 45px;
+    height: 100x;
+    width: 100px;
 }
 
-.paper-wallet--pub-addr-qr, .paper-wallet--pub-addr-txt {
-    left: 35px;
+.paper-wallet--pub-addr-txt {
+    left: 37px;
+    display: hidden;
+}
+
+.paper-wallet--pub-addr-qr {
+    left: 41px;
     display: hidden;
 }
 
 .paper-wallet--pvt-seed-qr {
-    right: 35px;
+    right: 42px;
 }
 
 .paper-wallet--pvt-seed-txt {
-  right: 35px;
+  right: 37px;
 }
 
 .paper-wallet--pvt-seed-txt, .paper-wallet--pub-addr-txt, .paper-wallet--ios-txt, .paper-wallet--android-txt {

@@ -71,6 +71,21 @@ html {
   height: 35px;
 }
 
+.link-span {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.link-span:hover, .link-span:focus {
+  color: #23527c;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-span:active, .link-span:hover {
+    outline: 0;
+}
+
 @media screen and (max-width: 1000px) {
   .App-footer {
     font-size: 18px;
@@ -98,8 +113,8 @@ html {
 }
 
 .addressQr {
-  width: 112px;
-  height: 112px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 8px;
   cursor: pointer;
 }

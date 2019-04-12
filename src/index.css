@@ -1,6 +1,16 @@
+@font-face {
+  font-family: "NotoSans Regular";
+    src:
+    url("fonts/NotoSans-Regular.woff"), /* Pretty Modern Browsers */
+    url("fonts/NotoSans-Regular.woff2"), /* Super Modern Browsers */
+    url("fonts/NotoSans-Regular.eot"),
+    url("fonts/NotoSans-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("fonts/NotoSans-Regular.eot?#iefix") format("embedded-opentype"); /* IE6-IE8 */
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', 'Open Sans', sans-serif;
+  font-family: 'NotoSans Regular', 'Open Sans', sans-serif;
   font-weight: 300;
 }

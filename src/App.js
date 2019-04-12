@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { DropdownButton, Dropdown, MenuItem, Button } from 'react-bootstrap';
-import * as wallet from 'rai-wallet';
+import { DropdownButton, MenuItem, Button } from 'react-bootstrap';
 import domtoimage from 'dom-to-image';
-import QrImage from './paperWallet/qrImage.js';
+import QrImageStyle from './paperWallet/qrImageStyle.js';
 import { saveAs } from 'file-saver';
 import $ from 'jquery';
 import { Base64 } from 'js-base64';
@@ -30,7 +29,8 @@ class App extends Component {
       activeThemeId: 0,
       nameMax: 28,
       msgMax: 80,
-      donationPath: donation
+      donationPath: donation,
+      qrSize: 200,
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -240,8 +240,8 @@ class App extends Component {
     $(document).psendmodal();
     var content =  '<div class="public_link_modal">'+
               '<strong>Who is hosting this service?</strong><br/>'+
-              'I\'m a community manager for the Nano Foundation, moderator of <a href="https://www.reddit.com/r/nanocurrency">/r/nanocurrency</a> / <a href="https://chat.nano.org/">nano discord</a> and creator of some other services like <a href="https://nanolinks.info">Nano Links</a> and <a href="https://github.com/Joohansson/NanoNodeGraphics">Nano Node Graphics</a>.<br/>'+
-              '<br/>If you find any bugs or have feedback, please don\'t hesitate to contact me at reddit or discord!';
+              'A community manager for the Nano Foundation, moderator of <a href="https://www.reddit.com/r/nanocurrency">/r/nanocurrency</a> / <a href="https://chat.nano.org/">nano discord</a> and creator of some other services like <a href="https://nanolinks.info">Nano Links</a> and <a href="https://github.com/Joohansson/NanoNodeGraphics">Nano Node Graphics</a>.<br/>'+
+              '<br/>If you find any bugs or have feedback, please don\'t hesitate to contact me at reddit or discord! You find me under alias Joohansson or Json.';
     var title 	= 'ABOUT OWNER';
     $('.modal_title span').html(title);
     $('.modal_content').html(content);
@@ -348,8 +348,7 @@ class App extends Component {
         //link.href = dataUrl;
         //link.click();
         /* Filesaver has better cross browser support */
-        var FileSaver = require('file-saver');
-        FileSaver.saveAs(dataUrl, "nanogift.png");
+        saveAs(dataUrl, "nanogift.png");
       })
       .catch(function (error) {
           console.error('oops, something went wrong!', error);
@@ -487,7 +486,7 @@ class App extends Component {
             <p className="App-address">
               <strong>Account (<span id="addrCopied">click QR to copy</span>): <a href={"xrb:" + this.state.account}>{this.state.account}</a><br /></strong>
             </p>
-            <QrImage className="addressQr" content={"xrb:" + this.state.account} onClick={this.copyToClipboard} />
+            <QrImageStyle className="addressQr" content={"xrb:" + this.state.account} size={this.state.qrSize} onClick={this.copyToClipboard} />
             <p>
               <strong>Check Account Status: <a href={"https://nanocrawler.cc/explorer/account/" + this.state.account} target="_blank">NanoCrawler</a> or <a href={"https://www.nanode.co/account/" + this.state.account} target="_blank">Nanode</a></strong>
             </p>
@@ -526,7 +525,7 @@ class App extends Component {
         <div className="extra"></div>
 
         <footer className="App-footer noprint">
-          <a href="javascript:void(0);" onClick={this.showOwnerModal}>About Owner</a> | <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <a href="javascript:void(0);" onClick={this.showDonateModal}>Donate me a Cookie <span role="img" aria-label="cookie">🍪</span></a>
+          <span className="link-span" onClick={this.showOwnerModal}>About Owner</span> | <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <span className="link-span" onClick={this.showDonateModal}>Donate me a Cookie <span role="img" aria-label="cookie">🍪</span></span>
         </footer>
       </div>
     );

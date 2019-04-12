@@ -1,19 +1,19 @@
 
-# Nano Giftcard
+# Nano Gift
 
-This application allows you to generate and print a giftcard for [NANO Currency](http://nano.org/).
+This application allows you to generate and print/download/share a gift card for [NANO Currency](http://nano.org/).
 
 [Public Site](https://nanogift.me)
 
 ## Install and run application locally
 
-Download [the zip here](https://github.com/Joohansson/nano-giftcard/raw/master/nano-paper-wallet.zip)
+Download [the zip here](https://github.com/Joohansson/nanogift/raw/master/nano-paper-wallet.zip)
 
-Disconnect your internet connection, extract the zip and open index.html in an safe OS environment.
+Disconnect your Internet connection, extract the zip and open index.html in an safe OS environment.
 
 ## Notes
 
-The site using [rai-wallet](https://www.npmjs.com/package/rai-wallet) lib to generate a wallet seed and account on client side.
+The application is using [rai-wallet](https://www.npmjs.com/package/rai-wallet) lib to generate a wallet seed and account on client side.
 
 This is a fork of the [nano-paper-wallet](https://github.com/jelofsson/nano-paper-wallet) app by jelofsson.
 
@@ -22,7 +22,7 @@ This is a fork of the [nano-paper-wallet](https://github.com/jelofsson/nano-pape
 ### Prepare for build (Ubuntu example)`
 
 `apt-get install`\
-`git clone https://github.com/Joohansson/nano-giftcard`\
+`git clone https://github.com/Joohansson/nanogift`\
 `cd nanogift`\
 `npm install`
 
