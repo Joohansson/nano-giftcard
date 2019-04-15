@@ -394,7 +394,7 @@ class App extends Component {
   };
   
   sanitize(str) {
-    str = str.replace(/[^a-z0-9áéíóúñüåäö .,_-]/gim,"");
+    str = str.replace(/[^a-z0-9Ã¡Ã©Ã­Ã³ÃºÃ±Ã¼Ã¥Ã¤Ã¶ .,_-]/gim,"");
     return str.trim();
   }
   
@@ -474,7 +474,7 @@ class App extends Component {
                   <li>Press "Generate new Seed".</li>
                   <li>Send funds to the displayed address with any <a href="https://nanolinks.info/#wallets">Nano Wallet</a>. Scan QR, click QR to copy or click the deep link.</li>
                   <li>Optional: Provide a name and message for the recipient and choose a theme.</li>
-                  <li>Print, Download or Share. Print screen for higher quality or if other methods does not work.</li>
+                  <li>Print, Download, Share or snapshot the screen. Zoom page 200% for best quality.</li>
                   <li>If making a small card, make sure QR are readable before giving it away!</li>
                   <li>Check the account status: Transaction arrived and unpocketed and later redeemed with 0 balance left.</li>
               </ol>
@@ -525,7 +525,7 @@ class App extends Component {
         <div className="extra"></div>
 
         <footer className="App-footer noprint">
-          <span className="link-span" onClick={this.showOwnerModal}>About Owner</span> | <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <span className="link-span" onClick={this.showDonateModal}>Donate me a Cookie <span role="img" aria-label="cookie">ğŸª</span></span>
+          <span className="link-span" onClick={this.showOwnerModal}>About Owner</span> | <a href="https://github.com/Joohansson/nanogift">Github</a> | <a href="https://nano.org">Nano Home</a> | <a href="https://nanolinks.info">Nano Guide</a> | <span className="link-span" onClick={this.showDonateModal}>Donate me a Cookie <span role="img" aria-label="cookie">Ã°ÂŸÂÂª</span></span>
         </footer>
       </div>
     );
