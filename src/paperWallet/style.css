@@ -100,28 +100,29 @@
   right: 36px;
 }
 
-.paper-wallet--name {
+.paper-wallet--name-cointainer {
     top: 123px;
     left: 200px;
     width: 400px;
+    height: 100px;
     text-align: center;
     color: #4a90e2;
+    display: block;
+    position: relative;
+}
+
+.paper-wallet--name {
     font-size: 23px;
+    line-height: 23px;
     font-family: 'NotoSans Bold';
     font-weight: bold;
-    white-space: nowrap;
 }
 
 .paper-wallet--msg {
-    top: 158px;
-    left: 200px;
-    width: 400px;
-    text-align: center;
-    color: #4a90e2;
     font-size: 19px;
     line-height: 19px;
     font-family: 'NotoSans';
-    word-wrap: break-word;
+    width: 400px;
 }
 
 .paper-wallet--seed, .paper-wallet--account {
